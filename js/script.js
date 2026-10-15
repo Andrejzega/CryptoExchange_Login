@@ -11,7 +11,7 @@ function togglePassword(id, btn) {
   input.type = isHidden ? "text" : "password";
   const icon = btn.querySelector("img");
   if (icon) {
-    icon.src = isHidden ? icon.src.replace("eye.svg", "eye-off.svg") : icon.src.replace("eye-off.svg", "eye.svg");
+    icon.src = isHidden ? icon.src.replace("eye.svg", "eye-closed.svg") : icon.src.replace("eye-closed.svg", "eye.svg");
     icon.alt = isHidden ? "Hide password" : "Show password";
   } else {
     btn.textContent = isHidden ? "Hide" : "Show";
@@ -21,6 +21,8 @@ function togglePassword(id, btn) {
 // Personal vs Business Tab Switch with Kraken Sliding Animation (register.html)
 function switchTab(type) {
   const isP = type === "personal";
+  const imageP = document.getElementById("image-personal");
+  const imageB = document.getElementById("image-business");
   const tabP = document.getElementById("tab-personal");
   const tabB = document.getElementById("tab-business");
   const formP = document.getElementById("form-personal");
@@ -35,12 +37,16 @@ function switchTab(type) {
   }
 
   if (isP) {
+    imageB.hidden = true;
+    imageP.hidden = false;
     formB.hidden = true;
     formP.hidden = false;
     formP.classList.remove("slide-right", "slide-left");
     void formP.offsetWidth;
     formP.classList.add("slide-left");
   } else {
+    imageP.hidden = true;
+    imageB.hidden = false;
     formP.hidden = true;
     formB.hidden = false;
     formB.classList.remove("slide-right", "slide-left");

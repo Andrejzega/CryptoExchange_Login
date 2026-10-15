@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Create an account - MadeUpCompany</title>
-  <link rel="icon" type="image/svg+xml" href="../img/favicon.svg">
+  <title>Create an account - Kraken</title>
+  <link rel="icon" type="image/svg+xml" href="../img/favicon.ico">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -12,21 +12,12 @@
   <!-- Global Header -->
   <header class="global-header">
     <a href="../index.html" class="logo-slot">
-      <img src="../img/logo-full.svg" alt="MadeUpCompany" class="logo-img">
+      <img src="../img/logo-full.svg" class="logo-img">
     </a>
 
     <div class="header-actions">
       <label class="lang-pill">
         <img src="../img/icons/globe.svg" alt="" class="lang-icon" width="16" height="16">
-        <select class="lang-select">
-          <option>English (US)</option>
-          <option>Slovenščina</option>
-          <option>Español</option>
-          <option>Deutsch</option>
-        </select>
-        <svg class="lang-chevron" width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M4 6l4 4 4-4"/>
-        </svg>
       </label>
       <a href="login.html" class="btn-header-light">Sign in</a>
     </div>
@@ -37,12 +28,14 @@
     <div class="sub-nav"></div>
 
     <div class="card">
-      <div class="illustration-slot">
-        <img src="../img/shield.svg" alt="Security" width="80" height="80">
+      <div class="image-slot" id="image-personal">
+        <img id="image-personal" src="../img/reg-personal.png" hidden>
+        <img id="image-business" src="../img/reg-business.png" hidden>
+
       </div>
 
       <h1 class="card-title" id="signup-title">Create an account</h1>
-      <p class="card-sub">Access the MadeUpCompany family of products.</p>
+      <p class="card-sub">Access the Kraken family of products.</p>
 
       <!-- Segmented Tab Toggle -->
       <div class="tab-control">

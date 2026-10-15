@@ -1,346 +1,152 @@
-/* MadeUpCompany - Minimal Educational Client-Side Script */
-
+/* MadeUpCompany - Educational Client Script */
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const DEMO_EMAIL = "student@example.com";
+const checkPass = p => p.length >= 12 && /\d/.test(p) && /[^a-zA-Z0-9\s]/.test(p) && /[a-zA-Z]/.test(p);
 
-// Password Visibility Toggle
-function togglePassword(id, btn) {
-  const input = document.getElementById(id);
-  if (!input) return;
-  const isHidden = input.type === "password";
-  input.type = isHidden ? "text" : "password";
-  const icon = btn.querySelector("img");
-  if (icon) {
-    icon.src = isHidden ? icon.src.replace("eye.svg", "eye-off.svg") : icon.src.replace("eye-off.svg", "eye.svg");
-    icon.alt = isHidden ? "Hide password" : "Show password";
-  } else {
-    btn.textContent = isHidden ? "Hide" : "Show";
-  }
+function setError(el, msg) {
+  const g = el?.closest(".field-group");
+  if (!g) return;
+  g.classList.toggle("has-error", !!msg);
+  let err = g.querySelector(".field-error-msg");
+  if (!err && msg) { err = document.createElement("div"); err.className = "field-error-msg"; g.appendChild(err); }
+  if (err && msg) err.textContent = msg;
+  if (msg) el.focus();
 }
 
-// Personal vs Business Tab Switch with Kraken Sliding Animation (register.html)
+function togglePassword(id, btn) {
+  const i = document.getElementById(id), img = btn?.querySelector("img");
+  if (!i) return;
+  i.type = i.type === "password" ? "text" : "password";
+  if (img) img.src = img.src.includes("-off") ? img.src.replace("-off", "") : img.src.replace(".svg", "-off.svg");
+}
+
 function switchTab(type) {
   const isP = type === "personal";
-  const tabP = document.getElementById("tab-personal");
-  const tabB = document.getElementById("tab-business");
-  const formP = document.getElementById("form-personal");
-  const formB = document.getElementById("form-business");
-  const title = document.getElementById("signup-title");
-  if (!tabP || !tabB || !formP || !formB) return;
-
-  tabP.classList.toggle("active", isP);
-  tabB.classList.toggle("active", !isP);
-  if (title) {
-    title.textContent = isP ? "Create an account" : "Create a business account";
-  }
-
-  if (isP) {
-    formB.hidden = true;
-    formP.hidden = false;
-    formP.classList.remove("slide-right", "slide-left");
-    void formP.offsetWidth;
-    formP.classList.add("slide-left");
-  } else {
-    formP.hidden = true;
-    formB.hidden = false;
-    formB.classList.remove("slide-right", "slide-left");
-    void formB.offsetWidth;
-    formB.classList.add("slide-right");
-  }
+  document.getElementById("tab-personal")?.classList.toggle("active", isP);
+  document.getElementById("tab-business")?.classList.toggle("active", !isP);
+  const fp = document.getElementById("form-personal"), fb = document.getElementById("form-business");
+  if (fp && fb) { fp.hidden = !isP; fb.hidden = isP; }
+  const t = document.getElementById("signup-title");
+  if (t) t.textContent = isP ? "Create an account" : "Create a business account";
 }
 
-// 6-Digit OTP Auto-advance & Clipboard Paste (Confirm pages)
 function setupOTP() {
-  const boxes = document.querySelectorAll(".otp-box");
-  boxes.forEach((box, i) => {
-    box.addEventListener("input", () => {
-      box.value = box.value.replace(/\D/g, "");
-      if (box.value && i < boxes.length - 1) boxes[i + 1].focus();
-    });
-    box.addEventListener("keydown", e => {
-      if (e.key === "Backspace" && !box.value && i > 0) boxes[i - 1].focus();
-    });
+  const b = document.querySelectorAll(".otp-box");
+  b.forEach((box, i) => {
+    box.oninput = () => { box.value = box.value.replace(/\D/g, ""); if (box.value && b[i + 1]) b[i + 1].focus(); };
+    box.onkeydown = e => { if (e.key === "Backspace" && !box.value && b[i - 1]) b[i - 1].focus(); };
   });
 }
 
 function pasteOTP(id) {
-  const boxes = document.querySelectorAll(`#${id} .otp-box`);
-  "123456".split("").forEach((d, i) => { if (boxes[i]) boxes[i].value = d; });
-  if (boxes[5]) boxes[5].focus();
+  const b = document.querySelectorAll(`#${id} .otp-box`);
+  "123456".split("").forEach((d, i) => { if (b[i]) b[i].value = d; });
+  b[5]?.focus();
 }
 
-// Password requirement chips - only appear when password field is selected
 function setupPasswordChips() {
   document.querySelectorAll(".password-field input").forEach(input => {
-    const form = input.closest("form") || input.closest(".card");
-    const chipsWrapper = form ? form.querySelector(".req-chips") : null;
-    const chips = form ? form.querySelectorAll(".chip") : [];
-    if (!chipsWrapper || !chips.length) return;
-
-    input.addEventListener("focus", () => chipsWrapper.classList.add("show"));
-    input.addEventListener("blur", () => chipsWrapper.classList.remove("show"));
-
-    input.addEventListener("input", () => {
-      const val = input.value;
-      const checks = {
-        length: val.length >= 12,
-        number: /\d/.test(val),
-        special: /[^a-zA-Z0-9\s]/.test(val),
-        letter: /[a-zA-Z]/.test(val)
+    const form = input.closest("form"), chips = form?.querySelector(".req-chips");
+    if (!chips) return;
+    input.onfocus = () => chips.classList.add("show");
+    input.onblur = () => chips.classList.remove("show");
+    input.oninput = () => {
+      const v = input.value, rules = {
+        length: v.length >= 12, number: /\d/.test(v), special: /[^a-zA-Z0-9\s]/.test(v), letter: /[a-zA-Z]/.test(v)
       };
-      chips.forEach(chip => {
-        const req = chip.dataset.req;
-        const ok = Boolean(req && checks[req]);
-        chip.classList.toggle("valid", ok);
-        const icon = chip.querySelector(".chip-icon");
-        if (icon) icon.textContent = ok ? "✓" : "✕";
+      chips.querySelectorAll(".chip").forEach(c => {
+        const ok = rules[c.dataset.req];
+        c.classList.toggle("valid", ok);
+        const ic = c.querySelector(".chip-icon");
+        if (ic) ic.textContent = ok ? "✓" : "✕";
       });
-    });
+    };
   });
 }
 
-// Email & Field Validation Helpers
-function showFieldError(input, message) {
-  if (!input) return;
-  const group = input.closest(".field-group");
-  if (!group) return;
-  group.classList.add("has-error");
-  let err = group.querySelector(".field-error-msg");
-  if (!err) {
-    err = document.createElement("div");
-    err.className = "field-error-msg";
-    group.appendChild(err);
-  }
-  if (message) err.textContent = message;
-}
-
-function clearFieldError(input) {
-  if (!input) return;
-  const group = input.closest(".field-group");
-  if (group) group.classList.remove("has-error");
-}
-
-function setupEmailLiveValidation(inputId) {
-  const input = document.getElementById(inputId);
-  if (!input) return;
-  input.addEventListener("input", () => {
-    if (EMAIL_REGEX.test(input.value.trim())) clearFieldError(input);
-  });
-  input.addEventListener("blur", () => {
-    const val = input.value.trim();
-    if (val && !EMAIL_REGEX.test(val)) {
-      showFieldError(input, "Please enter a valid email address");
-    }
-  });
-}
-
-// Form Handlers Setup
-function setupFormHandlers() {
-  // 1. Login Form (login.html)
-  const loginUser = document.getElementById("login-user");
-  const loginPass = document.getElementById("login-pass");
-  if (loginUser && loginPass) {
-    setupEmailLiveValidation("login-user");
-    const form = loginUser.closest("form");
-    if (form) {
-      form.addEventListener("submit", e => {
-        e.preventDefault();
-        const email = loginUser.value.trim();
-        const pass = loginPass.value;
-
-        if (!EMAIL_REGEX.test(email)) {
-          showFieldError(loginUser, "Please enter a valid email address");
-          loginUser.focus();
-          return;
-        }
-
-        if (email.toLowerCase() !== DEMO_EMAIL.toLowerCase()) {
-          showFieldError(loginUser, `Unknown account. Demo email: ${DEMO_EMAIL}`);
-          loginUser.focus();
-          return;
-        }
-
-        if (!pass) {
-          showFieldError(loginPass, "Please enter your password");
-          loginPass.focus();
-          return;
-        }
-
-        clearFieldError(loginUser);
-        clearFieldError(loginPass);
-        alert("Login successful!");
-        window.location.href = "login.html";
-      });
-    }
-  }
-
-  // 2. Personal Register Form (register.html)
-  const pEmail = document.getElementById("signup-personal-email");
-  const pForm = document.getElementById("form-personal");
-  if (pEmail && pForm) {
-    setupEmailLiveValidation("signup-personal-email");
-    pForm.addEventListener("submit", e => {
-      e.preventDefault();
-      const val = pEmail.value.trim();
-      if (!EMAIL_REGEX.test(val)) {
-        showFieldError(pEmail, "Please enter a valid email address");
-        pEmail.focus();
-        return;
-      }
-      clearFieldError(pEmail);
-      localStorage.setItem("userEmail", val);
-      localStorage.setItem("accountType", "personal");
-      window.location.href = "register-confirm.html";
-    });
-  }
-
-  // 3. Business Register Form (register.html)
-  const bEmail = document.getElementById("signup-biz-email");
-  const bPass = document.getElementById("signup-biz-pass");
-  const bForm = document.getElementById("form-business");
-  if (bEmail && bPass && bForm) {
-    setupEmailLiveValidation("signup-biz-email");
-    bForm.addEventListener("submit", e => {
-      e.preventDefault();
-      const email = bEmail.value.trim();
-      const pass = bPass.value;
-
-      if (!EMAIL_REGEX.test(email)) {
-        showFieldError(bEmail, "Please enter a valid email address");
-        bEmail.focus();
-        return;
-      }
-      clearFieldError(bEmail);
-
-      const passValid = pass.length >= 12 && /\d/.test(pass) && /[^a-zA-Z0-9\s]/.test(pass) && /[a-zA-Z]/.test(pass);
-      if (!passValid) {
-        showFieldError(bPass, "Password must fulfill all 4 security criteria");
-        bPass.focus();
-        return;
-      }
-      clearFieldError(bPass);
-
-      const country = document.getElementById("signup-biz-country");
-      if (country && !country.value) {
-        showFieldError(country, "Please select your country of formation");
-        country.focus();
-        return;
-      }
-
-      localStorage.setItem("userEmail", email);
-      localStorage.setItem("accountType", "business");
-      if (country) localStorage.setItem("userCountry", country.value);
-      window.location.href = "register-confirm.html?type=business";
-    });
-  }
-
-  // 4. Confirm Email OTP Page (register-confirm.html)
-  const regConfirmForm = document.getElementById("register-confirm-form") || document.querySelector(".flow-container form");
-  if (regConfirmForm && window.location.pathname.includes("register-confirm")) {
-    const isBusiness = new URLSearchParams(window.location.search).get("type") === "business" || localStorage.getItem("accountType") === "business";
-    regConfirmForm.addEventListener("submit", e => {
-      e.preventDefault();
-      if (isBusiness) {
-        window.location.href = "login.html";
-      } else {
-        window.location.href = "register-password.html";
-      }
-    });
-  }
-
-  // 5. Register Password Form (register-password.html)
-  const step3Pass = document.getElementById("step3-pass");
-  if (step3Pass) {
-    const form = step3Pass.closest("form");
-    if (form) {
-      form.addEventListener("submit", e => {
-        const pass = step3Pass.value;
-        const passValid = pass.length >= 12 && /\d/.test(pass) && /[^a-zA-Z0-9\s]/.test(pass) && /[a-zA-Z]/.test(pass);
-        if (!passValid) {
-          e.preventDefault();
-          showFieldError(step3Pass, "Password must fulfill all 4 security criteria");
-          step3Pass.focus();
-        }
-      });
-    }
-  }
-
-  // 6. Register Country Form (register-country.html)
-  const countrySelect = document.getElementById("country-select");
-  if (countrySelect) {
-    const form = countrySelect.closest("form");
-    if (form) {
-      form.addEventListener("submit", () => {
-        localStorage.setItem("userCountry", countrySelect.value);
-      });
-    }
-  }
-
-  // 7. Poll 1 Form with Phone Number Regex (poll-1.html)
-  const phoneInput = document.getElementById("phone");
-  if (phoneInput) {
-    const form = phoneInput.closest("form");
-    const fname = document.getElementById("fname");
-    const lname = document.getElementById("lname");
-
-    phoneInput.addEventListener("input", () => {
-      const cleanDigits = phoneInput.value.replace(/\D/g, "");
-      if (cleanDigits.length >= 5 && cleanDigits.length <= 15) clearFieldError(phoneInput);
-    });
-
-    if (form) {
-      form.addEventListener("submit", e => {
-        let hasError = false;
-        if (fname && !fname.value.trim()) {
-          showFieldError(fname, "Missing required field");
-          hasError = true;
-        } else {
-          clearFieldError(fname);
-        }
-
-        if (lname && !lname.value.trim()) {
-          showFieldError(lname, "Missing required field");
-          hasError = true;
-        } else {
-          clearFieldError(lname);
-        }
-
-        const cleanDigits = phoneInput.value.replace(/\D/g, "");
-        if (!cleanDigits || cleanDigits.length < 5 || cleanDigits.length > 15) {
-          showFieldError(phoneInput, "Please enter a valid phone number (5-15 digits)");
-          hasError = true;
-        } else {
-          clearFieldError(phoneInput);
-        }
-
-        if (hasError) {
-          e.preventDefault();
-        }
-      });
-    }
-  }
-
-  // 8. Login OTP Confirm Form (login-confirm.html)
-  const loginConfirmForm = document.getElementById("login-confirm-form") || document.querySelector(".flow-container form");
-  if (loginConfirmForm && window.location.pathname.includes("login-confirm")) {
-    loginConfirmForm.addEventListener("submit", e => {
-      e.preventDefault();
-      alert("Login successful!");
-      window.location.href = "login.html";
-    });
-  }
-
-  // 9. Summary Country Display (poll-3.html)
-  const summaryCountry = document.getElementById("summary-country-text");
-  if (summaryCountry) {
-    const saved = localStorage.getItem("userCountry");
-    if (saved) summaryCountry.textContent = saved;
-  }
-}
-
-// Initialize on DOM Ready
 document.addEventListener("DOMContentLoaded", () => {
   setupOTP();
   setupPasswordChips();
-  setupFormHandlers();
+
+  // Live email validation
+  document.querySelectorAll("input[type='email'], #login-user").forEach(i => {
+    i.addEventListener("input", () => { if (EMAIL_REGEX.test(i.value.trim())) setError(i, ""); });
+    i.addEventListener("blur", () => { if (i.value.trim() && !EMAIL_REGEX.test(i.value.trim())) setError(i, "Please enter a valid email address"); });
+  });
+
+  // Login Form
+  const u = document.getElementById("login-user"), p = document.getElementById("login-pass");
+  u?.closest("form")?.addEventListener("submit", e => {
+    e.preventDefault();
+    const em = u.value.trim();
+    if (!EMAIL_REGEX.test(em)) return setError(u, "Please enter a valid email address");
+    if (em.toLowerCase() !== DEMO_EMAIL) return setError(u, `Unknown account. Demo email: ${DEMO_EMAIL}`);
+    if (!p.value) return setError(p, "Please enter your password");
+    setError(u, ""); setError(p, "");
+    alert("Login successful!");
+    window.location.href = "login.html";
+  });
+
+  // Personal Register Form
+  const pu = document.getElementById("signup-personal-email");
+  pu?.closest("form")?.addEventListener("submit", e => {
+    e.preventDefault();
+    if (!EMAIL_REGEX.test(pu.value.trim())) return setError(pu, "Please enter a valid email address");
+    localStorage.setItem("userEmail", pu.value.trim());
+    localStorage.setItem("accountType", "personal");
+    window.location.href = "register-confirm.html";
+  });
+
+  // Business Register Form
+  const be = document.getElementById("signup-biz-email"), bp = document.getElementById("signup-biz-pass");
+  be?.closest("form")?.addEventListener("submit", e => {
+    e.preventDefault();
+    const em = be.value.trim(), ps = bp.value, c = document.getElementById("signup-biz-country");
+    if (!EMAIL_REGEX.test(em)) return setError(be, "Please enter a valid email address");
+    if (!checkPass(ps)) return setError(bp, "Password must fulfill all 4 security criteria");
+    if (c && !c.value) return setError(c, "Please select your country of formation");
+    localStorage.setItem("userEmail", em);
+    localStorage.setItem("accountType", "business");
+    if (c) localStorage.setItem("userCountry", c.value);
+    window.location.href = "register-confirm.html?type=business";
+  });
+
+  // Register OTP Confirm Form
+  const rc = document.getElementById("register-confirm-form") || document.querySelector(".flow-container form");
+  if (rc && location.pathname.includes("register-confirm")) {
+    rc.onsubmit = e => {
+      e.preventDefault();
+      const isBiz = new URLSearchParams(location.search).get("type") === "business" || localStorage.getItem("accountType") === "business";
+      window.location.href = isBiz ? "login.html" : "register-password.html";
+    };
+  }
+
+  // Password Setup (Step 3)
+  const s3 = document.getElementById("step3-pass");
+  s3?.closest("form")?.addEventListener("submit", e => {
+    if (!checkPass(s3.value)) { e.preventDefault(); setError(s3, "Password must fulfill all 4 security criteria"); }
+  });
+
+  // Register Country Selection
+  const cSel = document.getElementById("country-select");
+  cSel?.closest("form")?.addEventListener("submit", () => localStorage.setItem("userCountry", cSel.value));
+
+  // Poll 1 Phone & Name Validation
+  const phone = document.getElementById("phone");
+  phone?.closest("form")?.addEventListener("submit", e => {
+    const fn = document.getElementById("fname"), ln = document.getElementById("lname"), digits = phone.value.replace(/\D/g, "");
+    if (fn && !fn.value.trim()) { e.preventDefault(); return setError(fn, "Missing required field"); }
+    if (ln && !ln.value.trim()) { e.preventDefault(); return setError(ln, "Missing required field"); }
+    if (digits.length < 5 || digits.length > 15) { e.preventDefault(); return setError(phone, "Please enter a valid phone number (5-15 digits)"); }
+  });
+
+  // Login OTP Confirm Form
+  const lc = document.getElementById("login-confirm-form") || document.querySelector(".flow-container form");
+  if (lc && location.pathname.includes("login-confirm")) {
+    lc.onsubmit = e => { e.preventDefault(); alert("Login successful!"); window.location.href = "login.html"; };
+  }
+
+  // Summary Country Display (poll-3.html)
+  const sc = document.getElementById("summary-country-text"), saved = localStorage.getItem("userCountry");
+  if (sc && saved) sc.textContent = saved;
 });

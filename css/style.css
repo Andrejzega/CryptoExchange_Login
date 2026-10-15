@@ -1,86 +1,67 @@
-/* ==========================================================================
-   MadeUpCompany - Stylesheet (Kraken Design System)
-   Light Mode | Clean CSS | Sorted by DOM / Visual Order
-   ========================================================================== */
 
-/* --------------------------------------------------------------------------
-   1. FONTS (Local Assets)
-   -------------------------------------------------------------------------- */
+/* Font Import */
+
 @font-face {
   font-family: 'Kraken-Product';
   src: url('fonts/Kraken-Product-Regular.87314a06.woff2') format('woff2');
   font-weight: 400;
-  font-display: swap;
 }
 @font-face {
   font-family: 'Kraken-Product';
   src: url('fonts/Kraken-Product-Medium.4e284e61.woff2') format('woff2');
   font-weight: 500;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Kraken-Product';
-  src: url('fonts/Kraken-Product-Medium.4e284e61.woff2') format('woff2');
-  font-weight: 600;
-  font-display: swap;
 }
 @font-face {
   font-family: 'Kraken-Product';
   src: url('fonts/Kraken-Product-Bold.989d8b60.woff2') format('woff2');
   font-weight: 700;
-  font-display: swap;
 }
 @font-face {
   font-family: 'Kraken-Brand';
   src: url('fonts/Kraken-Brand-Bold.ea25a794.woff2') format('woff2');
   font-weight: 700;
-  font-display: swap;
 }
 @font-face {
   font-family: 'Celias';
   src: url('fonts/Celias-Regular.69fc49f2.woff2') format('woff2');
   font-weight: 400;
-  font-display: swap;
 }
 @font-face {
   font-family: 'Celias';
   src: url('fonts/Celias-Medium.ca2063c9.woff2') format('woff2');
   font-weight: 500;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Celias';
-  src: url('fonts/Celias-Medium.ca2063c9.woff2') format('woff2');
-  font-weight: 600;
-  font-display: swap;
 }
 @font-face {
   font-family: 'Celias';
   src: url('fonts/Celias-Bold.8f2f549d.woff2') format('woff2');
   font-weight: 700;
-  font-display: swap;
 }
 
-/* --------------------------------------------------------------------------
-   2. VARIABLES, RESETS & GLOBAL BASE
-   -------------------------------------------------------------------------- */
+/* Variables */
+
 :root {
+  /* Brand colors */
   --purple: #7132F5;
   --purple-hover: #5B1ECF;
-  --purple-soft: #F5F1FE;
-  --purple-border: #EBE5FE;
+
+  /* Surfaces & Backgrounds */
   --bg: #F6F5F9;
   --card-bg: #FFFFFF;
   --card-border: rgba(104, 107, 130, 0.16);
+
+  /* Typography colors */
+  --text: #101114;
+  --text-muted: #686B82;
+
+  /* Input & Error colors */
   --input-bg: #F0F1F5;
   --input-hover: #E8EAEF;
   --input-border: #E2E3EB;
-  --text: #101114;
-  --text-muted: #686B82;
+  --error: #E11900;
+  --error-bg: #FEE4E2;
+
+  /* Sizing */
   --radius: 12px;
-  --radius-card: 24px;
-  --radius-header-btn: 8px;
-  --radius-pill: 9999px;
 }
 
 * {
@@ -89,30 +70,24 @@
   padding: 0;
 }
 
-html {
-  background-color: var(--bg);
-}
-
 body {
-  font-family: Kraken-Product, Celias, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: Kraken-Product, Celias, sans-serif;
   background-color: var(--bg);
   color: var(--text);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3 {
-  font-family: Kraken-Product, Celias, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: Kraken-Product, Celias, sans-serif;
   font-weight: 600;
   color: var(--text);
   line-height: 1.25;
 }
 
-/* --------------------------------------------------------------------------
-   3. GLOBAL HEADER (DOM top: <header class="global-header">)
-   -------------------------------------------------------------------------- */
+/* Header */
+
 .global-header {
   width: 100%;
   height: 56px;
@@ -120,20 +95,15 @@ h1, h2, h3 {
   justify-content: space-between;
   align-items: center;
   padding: 0 32px;
-  background: transparent;
-  gap: 16px;
-  box-sizing: border-box;
 }
 
 .logo-slot {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   text-decoration: none;
-  flex-shrink: 0;
 }
 
 .logo-img {
-  display: block;
   height: 22px;
   width: auto;
 }
@@ -142,34 +112,25 @@ h1, h2, h3 {
   display: flex;
   align-items: center;
   gap: 12px;
-  flex-shrink: 0;
 }
 
 .lang-pill {
-  position: relative;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   background: var(--input-bg);
-  border-radius: var(--radius-header-btn);
+  border-radius: 8px;
   height: 32px;
   padding: 0 10px;
   gap: 6px;
   cursor: pointer;
-  transition: background-color 0.15s;
 }
-.lang-pill:hover { background: #E6E8EF; }
-.lang-pill img,
-.lang-pill .lang-icon {
-  display: block;
-  opacity: 0.75;
-  pointer-events: none;
-  flex-shrink: 0;
+.lang-pill:hover {
+  background: var(--input-hover);
 }
 
 .lang-select {
   appearance: none;
   -webkit-appearance: none;
-  -moz-appearance: none;
   background: transparent;
   border: none;
   font-size: 13.5px;
@@ -178,18 +139,10 @@ h1, h2, h3 {
   cursor: pointer;
   outline: none;
   font-family: inherit;
-  padding: 0 2px 0 0;
-  margin: 0;
-}
-.lang-select::-ms-expand {
-  display: none;
 }
 
 .lang-chevron {
-  display: block;
   color: var(--text-muted);
-  pointer-events: none;
-  flex-shrink: 0;
 }
 
 .btn-header-accent,
@@ -197,32 +150,33 @@ h1, h2, h3 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 32px;
+  height: 2rem;
   padding: 0 16px;
-  border-radius: var(--radius-header-btn);
-  font-size: 14px;
+  border-radius: 8px;
+  font-size: .75rem;
   font-weight: 600;
   text-decoration: none;
   white-space: nowrap;
-  font-family: inherit;
-  transition: background-color 0.15s;
 }
 
 .btn-header-accent {
   background: #EDE7FE;
   color: var(--purple);
 }
-.btn-header-accent:hover { background: #DFD5FD; }
+.btn-header-accent:hover {
+  background: #DFD5FD;
+}
 
 .btn-header-light {
   background: var(--input-bg);
   color: var(--text);
 }
-.btn-header-light:hover { background: #E6E8EF; }
+.btn-header-light:hover {
+  background: var(--input-hover);
+}
 
-/* --------------------------------------------------------------------------
-   4. SUB-NAVIGATION (Optional Back / Close toolbar inside main)
-   -------------------------------------------------------------------------- */
+/* Navigation - back / close buttons */
+
 .sub-nav {
   display: flex;
   justify-content: space-between;
@@ -235,10 +189,11 @@ h1, h2, h3 {
   color: var(--text);
   font-size: 14px;
   font-weight: 500;
-  cursor: pointer;
   text-decoration: none;
 }
-.btn-back:hover { color: var(--purple); }
+.btn-back:hover {
+  color: var(--purple);
+}
 
 .btn-close {
   font-size: 20px;
@@ -246,76 +201,65 @@ h1, h2, h3 {
   text-decoration: none;
   margin-left: auto;
 }
-.btn-close:hover { color: var(--text); }
+.btn-close:hover {
+  color: var(--text);
+}
 
-/* --------------------------------------------------------------------------
-   5. FLOW CONTAINER & CARD WRAPPER (<main class="flow-container"> -> .card)
-   -------------------------------------------------------------------------- */
+
+/* main flow conainter / card */
+
 .flow-container {
   width: 100%;
   max-width: 496px;
-  margin: 56px auto 48px;
-  padding: 0;
+  margin: 36px auto 36px;
   display: flex;
   flex-direction: column;
-}
-
-@keyframes krakenCardSlideIn {
-  from { opacity: 0; transform: translateY(18px) scale(0.99); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .card {
   width: 100%;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
-  border-radius: var(--radius-card);
-  padding: 48px 24px 36px;
+  border-radius: 24px;
+  padding: 24px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
-  animation: krakenCardSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: fadeIn 0.3s ease;
 }
 
-/* --------------------------------------------------------------------------
-   6. CARD HEADINGS & MEDIA (Top of Card: Animation, Title, Subtitle, Tabs)
-   -------------------------------------------------------------------------- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Card header + animation */
+
 .animation-slot,
-.illustration-slot {
+.image-slot {
   text-align: center;
-  margin-bottom: 22px;
   display: flex;
   justify-content: center;
 }
 
 .animation-slot video {
-  display: block;
-  width: 152px;
-  height: 125px;
+  max-width: 80%;
+  width: 10rem;
   object-fit: contain;
 }
 
 .illustration-slot img {
-  display: block;
-  max-width: 10rem;
+  max-width: 140px;
   height: auto;
-  transition: transform 0.2s ease;
 }
 
 .card-title {
-  font-family: Kraken-Product, Celias, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-size: 26px;
   font-weight: 600;
   text-align: center;
-  margin-bottom: 22px;
-  letter-spacing: -0.01em;
-}
-
-.card-title:has(+ .card-sub) {
   margin-bottom: 8px;
 }
 
 .card-sub {
   font-size: 14px;
-  font-weight: 400;
   color: var(--text-muted);
   text-align: center;
   margin-bottom: 24px;
@@ -338,11 +282,12 @@ h1, h2, h3 {
   margin-bottom: 12px;
 }
 
-/* Segmented Tab Control (register.html Personal/Business) */
+/* Personal / Business Tab Toggle */
 .tab-control {
   display: flex;
   background: var(--input-bg);
-  border-radius: var(--radius-pill);
+  rounding: 0;
+  border-radius: 50px;
   padding: 4px;
   max-width: 200px;
   margin: 0 auto 22px;
@@ -353,14 +298,13 @@ h1, h2, h3 {
   background: none;
   border: none;
   padding: 8px 18px;
-  border-radius: var(--radius-pill);
+  border-radius: 50px;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
   color: var(--text-muted);
-  white-space: nowrap;
   font-family: inherit;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.2s ease;
 }
 .tab-btn.active {
   background: var(--card-bg);
@@ -369,22 +313,21 @@ h1, h2, h3 {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
+/* Sliding tab transitions */
 @keyframes slideFromRight {
-  from { opacity: 0; transform: translateX(24px); }
+  from { opacity: 0; transform: translateX(20px); }
   to { opacity: 1; transform: translateX(0); }
 }
-
 @keyframes slideFromLeft {
-  from { opacity: 0; transform: translateX(-24px); }
+  from { opacity: 0; transform: translateX(-20px); }
   to { opacity: 1; transform: translateX(0); }
 }
+.slide-right { animation: slideFromRight 0.25s ease forwards; }
+.slide-left { animation: slideFromLeft 0.25s ease forwards; }
 
-.slide-right { animation: slideFromRight 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-.slide-left { animation: slideFromLeft 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 
-/* --------------------------------------------------------------------------
-   7. FORM GROUPS, INPUTS & FLOATING LABELS (<form> -> .field-stack -> .text-field)
-   -------------------------------------------------------------------------- */
+/* Form inputs + floating placeholder labels */
+
 .field-group {
   position: relative;
   margin-top: 14px;
@@ -399,12 +342,6 @@ h1, h2, h3 {
   color: var(--text);
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="tel"],
-input[type="date"],
-select,
 .text-field {
   width: 100%;
   height: 56px;
@@ -420,15 +357,19 @@ select,
   transition: border-color 0.15s, background-color 0.15s;
 }
 
-.text-field:hover:not(:focus) { background-color: var(--input-hover); }
-input:focus, select:focus, .text-field:focus {
-  border-color: var(--purple);
-  background: var(--card-bg);
+.text-field:hover {
+  background-color: var(--input-hover);
 }
 
+.text-field:focus {
+  border-color: var(--purple);
+  background-color: var(--card-bg);
+}
+
+/* Red error validation state */
 .field-group.has-error .text-field {
-  border-color: #E11900 !important;
-  border-bottom: 1px solid #E11900 !important;
+  border-color: var(--error) !important;
+  border-bottom: 1px solid var(--error) !important;
   background-color: #FFFBFB;
 }
 
@@ -436,13 +377,14 @@ input:focus, select:focus, .text-field:focus {
   display: none;
   font-size: 12px;
   font-weight: 500;
-  color: #E11900;
+  color: var(--error);
   margin-top: 4px;
   text-align: left;
   padding: 4px 8px;
-  background-color: #FEE4E2;
+  background-color: var(--error-bg);
   border-radius: 6px;
 }
+
 .field-group.has-error .field-error-msg {
   display: block;
 }
@@ -454,14 +396,17 @@ input:focus, select:focus, .text-field:focus {
   gap: 2px;
   margin-top: 14px;
 }
-.field-stack > .field-group { margin-top: 0; }
-.field-stack > .field-group:first-child .text-field { border-radius: 12px 12px 2px 2px; }
-.field-stack > .field-group:not(:first-child):not(:last-child) .text-field { border-radius: 2px; }
-.field-stack > .field-group:last-child .text-field { border-radius: 2px 2px 12px 12px; }
-.field-stack > .field-group:only-child .text-field { border-radius: 12px; }
-.field-stack > .field-group .text-field:focus { z-index: 2; position: relative; }
+.field-stack .field-group {
+  margin-top: 0;
+}
+.field-stack .field-group:first-child .text-field {
+  border-radius: var(--radius) var(--radius) 2px 2px;
+}
+.field-stack .field-group:last-child .text-field {
+  border-radius: 2px 2px var(--radius) var(--radius);
+}
 
-/* Custom Dropdown Chevron */
+/* Custom dropdown chevron */
 select.text-field, .select-field {
   appearance: none;
   -webkit-appearance: none;
@@ -472,37 +417,42 @@ select.text-field, .select-field {
   cursor: pointer;
 }
 
-/* Floating Label */
+/* Floating labels */
 .floating-label {
   position: absolute;
   left: 14px;
   top: 50%;
   transform: translateY(-50%);
   font-size: 14.5px;
-  font-weight: 400;
   color: var(--text-muted);
   pointer-events: none;
-  transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.18s ease;
   user-select: none;
-  z-index: 1;
 }
 
 .text-field:focus ~ .floating-label,
 .text-field:not(:placeholder-shown) ~ .floating-label,
-.text-field:-webkit-autofill ~ .floating-label,
 select.text-field ~ .floating-label,
 input[type="date"].text-field ~ .floating-label {
   top: 8px;
   transform: translateY(0);
   font-size: 11.5px;
   font-weight: 500;
-  letter-spacing: 0.1px;
 }
-.text-field:focus ~ .floating-label { color: var(--purple); }
 
-/* Password field & Toggle */
-.password-field { position: relative; }
-.password-field .text-field { padding-right: 50px; }
+.text-field:focus ~ .floating-label {
+  color: var(--purple);
+}
+
+
+/* Password Field */
+
+.password-field {
+  position: relative;
+}
+.password-field .text-field {
+  padding-right: 50px;
+}
 
 .password-toggle {
   position: absolute;
@@ -513,15 +463,20 @@ input[type="date"].text-field ~ .floating-label {
   background: transparent;
   cursor: pointer;
   padding: 6px;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 3;
 }
-.password-toggle img { display: block; width: 18px; height: 18px; opacity: 0.6; }
-.password-toggle:hover img { opacity: 0.9; }
+.password-toggle img {
+  width: 18px;
+  height: 18px;
+  opacity: 0.6;
+}
+.password-toggle:hover img {
+  opacity: 0.9;
+}
 
-/* Password Requirement Chips - hidden until password field is selected */
+/* Password requirements */
 .req-chips {
   display: none;
   flex-wrap: wrap;
@@ -530,7 +485,6 @@ input[type="date"].text-field ~ .floating-label {
 }
 .password-group:focus-within .req-chips,
 .field-group.password-field:focus-within ~ .req-chips,
-.field-stack:has(#signup-biz-pass:focus) ~ .req-chips,
 .req-chips.show {
   display: flex;
 }
@@ -540,18 +494,29 @@ input[type="date"].text-field ~ .floating-label {
   font-weight: 500;
   color: var(--text-muted);
   background: var(--input-bg);
-  border-radius: var(--radius-pill);
+  border-radius: 50px;
   padding: 5px 12px;
   display: inline-flex;
   align-items: center;
   gap: 5px;
   white-space: nowrap;
 }
-.chip-icon { font-size: 11px; opacity: 0.7; }
-.chip.valid { background: #E8F8ED; color: #107C41; }
-.chip.valid .chip-icon { color: #107C41; opacity: 1; }
-.chip.invalid { background: #FEE4E2; color: #D92D20; }
-.chip.invalid .chip-icon { color: #D92D20; opacity: 1; }
+.chip-icon {
+  font-size: 11px;
+  opacity: 0.7;
+}
+.chip.valid {
+  background: #E8F8ED;
+  color: #107C41;
+}
+.chip.valid .chip-icon {
+  color: #107C41;
+  opacity: 1;
+}
+.chip.invalid {
+  background: var(--error-bg);
+  color: var(--error);
+}
 
 .input-inline-btn {
   position: absolute;
@@ -566,15 +531,11 @@ input[type="date"].text-field ~ .floating-label {
   cursor: pointer;
   font-family: inherit;
   padding: 4px 6px;
-  z-index: 2;
 }
 .input-inline-btn:hover {
   color: var(--text);
 }
 
-/* --------------------------------------------------------------------------
-   8. SPECIAL INPUT ROWS, CHECKBOXES & SUMMARY
-   -------------------------------------------------------------------------- */
 .forgot-row {
   margin: 14px 0 18px;
   font-size: 13.5px;
@@ -585,7 +546,9 @@ input[type="date"].text-field ~ .floating-label {
   font-weight: 500;
   text-decoration: none;
 }
-.forgot-row a:hover { text-decoration: underline; }
+.forgot-row a:hover {
+  text-decoration: underline;
+}
 
 .checkbox-list, .radio-list {
   display: flex;
@@ -603,36 +566,7 @@ input[type="date"].text-field ~ .floating-label {
   user-select: none;
 }
 
-.check-item input[type="checkbox"] {
-  appearance: none;
-  -webkit-appearance: none;
-  width: 20px;
-  height: 20px;
-  background-color: #D5D8E2;
-  border-radius: 6px;
-  display: inline-grid;
-  place-content: center;
-  cursor: pointer;
-  flex-shrink: 0;
-  transition: background-color 0.15s, border-color 0.15s;
-  margin: 0;
-}
-.check-item input[type="checkbox"]::before {
-  content: "";
-  width: 10px;
-  height: 6px;
-  border-left: 2px solid #FFFFFF;
-  border-bottom: 2px solid #FFFFFF;
-  transform: rotate(-45deg) translate(1px, -1px) scale(0);
-  transition: transform 0.12s ease-in-out;
-}
-.check-item input[type="checkbox"]:checked {
-  background-color: var(--purple);
-}
-.check-item input[type="checkbox"]:checked::before {
-  transform: rotate(-45deg) translate(1px, -1px) scale(1);
-}
-
+.check-item input[type="checkbox"],
 .radio-item input[type="radio"] {
   accent-color: var(--purple);
   width: 18px;
@@ -658,11 +592,17 @@ input[type="date"].text-field ~ .floating-label {
   cursor: pointer;
 }
 
-.row { display: flex; gap: 12px; }
-.name-row { display: flex; gap: 12px; }
-.name-col { flex: 1; }
+.row, .name-row {
+  display: flex;
+  gap: 12px;
+}
+.name-col {
+  flex: 1;
+}
 
-.phone-row { margin-top: 14px; }
+.phone-row {
+  margin-top: 14px;
+}
 .phone-row .phone-code {
   width: 110px;
   text-align: center;
@@ -670,12 +610,11 @@ input[type="date"].text-field ~ .floating-label {
   font-size: 14px;
   padding: 0 8px;
   height: 56px;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius);
   background-color: var(--input-bg);
   border: 1px solid var(--input-border);
-  color: var(--text-color);
+  color: var(--text);
   cursor: pointer;
-  box-sizing: border-box;
 }
 .phone-row .phone-code:focus {
   border-color: var(--purple);
@@ -708,7 +647,6 @@ input[type="date"].text-field ~ .floating-label {
 .otp-box:focus {
   border-color: var(--purple);
   background: var(--card-bg);
-  box-shadow: 0 0 0 3px rgba(113, 50, 245, 0.15);
 }
 
 .otp-action {
@@ -719,8 +657,8 @@ input[type="date"].text-field ~ .floating-label {
   display: flex;
   align-items: center;
   gap: 14px;
-  background: var(--purple-soft);
-  border: 1px solid var(--purple-border);
+  background: #F5F1FE;
+  border: 1px solid #EBE5FE;
   padding: 16px;
   border-radius: var(--radius);
   margin-bottom: 20px;
@@ -730,12 +668,19 @@ input[type="date"].text-field ~ .floating-label {
   display: flex;
   align-items: center;
 }
-.summary-label { font-size: 13px; font-weight: 600; }
-.summary-val { font-size: 14px; color: var(--purple); font-weight: 500; }
+.summary-label {
+  font-size: 13px;
+  font-weight: 600;
+}
+.summary-val {
+  font-size: 14px;
+  color: var(--purple);
+  font-weight: 500;
+}
 
-/* --------------------------------------------------------------------------
-   9. BUTTONS, DIVIDERS & SOCIAL ACTIONS
-   -------------------------------------------------------------------------- */
+
+/* Buttons + 3rd party login buttons */
+
 .btn {
   width: 100%;
   height: 52px;
@@ -751,22 +696,16 @@ input[type="date"].text-field ~ .floating-label {
   white-space: nowrap;
   padding: 0 24px;
   font-family: inherit;
-  transition: background-color 0.15s, transform 0.1s;
+  transition: background-color 0.15s;
 }
-.btn:active { transform: scale(0.99); }
 
 .btn-primary {
   background: var(--purple);
   color: #FFFFFF;
   margin-top: 18px;
 }
-.btn-primary:hover { background: var(--purple-hover); }
-
-.btn-primary.btn-disabled,
-.btn:disabled {
-  opacity: 0.55;
-  cursor: not-allowed;
-  pointer-events: none;
+.btn-primary:hover {
+  background: var(--purple-hover);
 }
 
 .btn-secondary {
@@ -774,7 +713,7 @@ input[type="date"].text-field ~ .floating-label {
   color: var(--text-muted);
 }
 .btn-secondary:hover {
-  background: #E6E8EF;
+  background: var(--input-hover);
   color: var(--text);
 }
 
@@ -798,7 +737,9 @@ input[type="date"].text-field ~ .floating-label {
   text-decoration: none;
   font-family: inherit;
 }
-.btn-link:hover { text-decoration: underline; }
+.btn-link:hover {
+  text-decoration: underline;
+}
 
 .divider {
   display: flex;
@@ -808,20 +749,25 @@ input[type="date"].text-field ~ .floating-label {
   color: var(--text-muted);
   font-size: 13.5px;
 }
-.divider::before, .divider::after {
+.divider::before,
+.divider::after {
   content: "";
   flex: 1;
   border-bottom: 1px solid var(--input-border);
 }
-.divider:not(:empty)::before { margin-right: 12px; }
-.divider:not(:empty)::after { margin-left: 12px; }
+.divider::before {
+  margin-right: 12px;
+}
+.divider::after {
+  margin-left: 12px;
+}
 
 .social-button {
   width: 100%;
   height: 52px;
   margin-top: 16px;
   border: none;
-  border-radius: 12px;
+  border-radius: var(--radius);
   background-color: var(--input-bg);
   color: var(--text-muted);
   display: flex;
@@ -834,18 +780,10 @@ input[type="date"].text-field ~ .floating-label {
   font-family: inherit;
   transition: background-color 0.15s, color 0.15s;
 }
-.social-button span {
-  color: inherit;
-  transition: color 0.15s;
-}
 .social-button:hover {
   background-color: var(--input-hover);
   color: var(--text);
 }
-.social-button:hover span {
-  color: var(--text);
-}
-.social-button img { display: block; flex-shrink: 0; }
 
 .social-circle-row {
   display: flex;
@@ -865,14 +803,13 @@ input[type="date"].text-field ~ .floating-label {
   justify-content: center;
   cursor: pointer;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
-  transition: background-color 0.15s, transform 0.15s;
 }
-.social-circle-btn:hover { background-color: var(--input-bg); transform: translateY(-1px); }
-.social-circle-btn img { display: block; }
+.social-circle-btn:hover {
+  background-color: var(--input-bg);
+}
 
-/* --------------------------------------------------------------------------
-   10. CARD FOOTER & DISCLAIMERS
-   -------------------------------------------------------------------------- */
+/* Card Footer + disclaimers */
+
 .card-footer, .disclaimer {
   font-size: 13px;
   color: var(--text-muted);
@@ -885,7 +822,9 @@ input[type="date"].text-field ~ .floating-label {
   text-decoration: none;
   font-weight: 500;
 }
-.card-footer a:hover, .disclaimer a:hover { text-decoration: underline; }
+.card-footer a:hover, .disclaimer a:hover {
+  text-decoration: underline;
+}
 
 .page-disclaimer {
   max-width: 440px;
@@ -903,42 +842,40 @@ input[type="date"].text-field ~ .floating-label {
   text-decoration: underline;
 }
 
-/* --------------------------------------------------------------------------
-   11. GLOBAL FOOTER (DOM bottom: <footer class="global-footer">)
-   -------------------------------------------------------------------------- */
+
+/* Global Footer */
+
 .global-footer {
   width: 100%;
   text-align: center;
   padding: 24px 16px 32px;
-  border-top: none;
   font-size: 13px;
   color: var(--text-muted);
   margin-top: auto;
 }
+
 .footer-links {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 28px;
 }
+
 .footer-links a {
   color: var(--text-muted);
   text-decoration: none;
   font-size: 13px;
   font-weight: 500;
-  transition: color 0.15s;
 }
 .footer-links a:hover {
   color: var(--purple);
   text-decoration: underline;
 }
-.footer-copy {
-  display: none;
-}
 
-/* --------------------------------------------------------------------------
-   12. WARNING NOTICE PAGE (index.html)
-   -------------------------------------------------------------------------- */
+
+
+/* Warning landing page */
+
 .warning-page {
   min-height: 100vh;
   display: flex;
@@ -961,7 +898,7 @@ input[type="date"].text-field ~ .floating-label {
   background-color: #DC2626;
   color: #FFFFFF;
   padding: 18px 24px;
-  border-radius: 12px;
+  border-radius: var(--radius);
   font-size: 14.5px;
   font-weight: 500;
   line-height: 1.5;
@@ -972,21 +909,4 @@ input[type="date"].text-field ~ .floating-label {
   margin-top: 0;
   width: 100%;
   text-decoration: none;
-}
-
-/* --------------------------------------------------------------------------
-   13. RESPONSIVE DESIGN
-   -------------------------------------------------------------------------- */
-@media (max-width: 600px) {
-  .global-header {
-    padding: 0 16px;
-  }
-  .card {
-    padding: 32px 20px;
-    border-radius: 20px;
-  }
-  .flow-container {
-    padding: 0 16px;
-    margin: 16px auto 32px;
-  }
 }
