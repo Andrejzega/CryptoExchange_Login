@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="80" height="80">
+  <defs>
+    <linearGradient id="krakenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A78BFA"/>
+      <stop offset="50%" stop-color="#7132F5"/>
+      <stop offset="100%" stop-color="#4C1D95"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#7132F5" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <g filter="url(#glow)">
+    <path d="M50 15C32 15 20 28 20 46C20 54 22 62 25 72C26.5 76.5 32 76.5 33.5 72C35 67 36 58 37 50C37.5 46 41 46 41.5 50C42.5 58 43.5 67 45 72C46.5 76.5 52 76.5 53.5 72C55 67 56 58 57 50C57.5 46 61 46 61.5 50C62.5 58 63.5 67 65 72C66.5 76.5 72 76.5 73.5 72C76.5 62 78.5 54 78.5 46C78.5 28 68 15 50 15Z" fill="url(#krakenGrad)"/>
+    <ellipse cx="40" cy="38" rx="4" ry="5" fill="#FFFFFF" opacity="0.9"/>
+    <ellipse cx="60" cy="38" rx="4" ry="5" fill="#FFFFFF" opacity="0.9"/>
+  </g>
+</svg>

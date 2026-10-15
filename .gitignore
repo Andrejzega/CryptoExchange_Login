@@ -1,0 +1,12 @@
+# Operating System
+.DS_Store
+Thumbs.db
+
+# Editor & IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs & temp
+*.log

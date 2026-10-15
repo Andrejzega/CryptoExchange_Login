@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Onboarding Poll - Step 2 - MadeUpCompany</title>
+  <link rel="icon" type="image/svg+xml" href="../img/favicon.svg">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- Global Header -->
+  <header class="global-header">
+    <a href="../index.html" class="logo-slot">
+      <img src="../img/logo-full.svg" alt="MadeUpCompany" class="logo-img">
+    </a>
+
+    <div class="header-actions">
+      <label class="lang-pill">
+        <img src="../img/icons/globe.svg" alt="" class="lang-icon" width="16" height="16">
+        <select class="lang-select">
+          <option>English (US)</option>
+          <option>Slovenščina</option>
+          <option>Español</option>
+          <option>Deutsch</option>
+        </select>
+        <svg class="lang-chevron" width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 6l4 4 4-4"/>
+        </svg>
+      </label>
+      <a href="login.html" class="btn-header-light">Sign out</a>
+    </div>
+  </header>
+
+  <!-- Poll Step 2: Info Page 2 -->
+  <main class="flow-container">
+    <div class="sub-nav">
+      <a href="poll-1.html" class="btn-back">‹ Back</a>
+      <a href="../index.html" class="btn-close" title="Exit">✕</a>
+    </div>
+
+    <div class="card text-left">
+      <h1 class="card-title">info page 2</h1>
+      <p class="card-sub">text2.</p>
+
+      <form action="poll-3.html" method="GET">
+        <h2 class="section-title">Question 1</h2>
+        <div class="radio-list">
+          <label class="radio-item"><input type="radio" name="q1" checked> <span>answer 1</span></label>
+          <label class="radio-item"><input type="radio" name="q1"> <span>answer 2</span></label>
+          <label class="radio-item"><input type="radio" name="q1"> <span>answer 3</span></label>
+        </div>
+
+        <h2 class="section-title">question 2</h2>
+        <div class="radio-list">
+          <label class="radio-item"><input type="radio" name="q2"> <span>answer 1</span></label>
+          <label class="radio-item"><input type="radio" name="q2" checked> <span>answer 2</span></label>
+          <label class="radio-item"><input type="radio" name="q2"> <span>answer 3</span></label>
+        </div>
+
+        <label class="field-label" for="poll-select-1">Question with drop-down menu with multiple options 1</label>
+        <div class="field-group">
+          <select id="poll-select-1" class="text-field select-field" required>
+            <option value="" disabled selected>Select an option</option>
+            <option>Option A</option>
+            <option>Option B</option>
+            <option>Option C</option>
+          </select>
+        </div>
+
+        <label class="field-label" for="poll-select-2">Question with drop-down menu with multiple options 2</label>
+        <div class="field-group">
+          <select id="poll-select-2" class="text-field select-field">
+            <option value="" disabled selected>Select an option</option>
+            <option>Option 1</option>
+            <option>Option 2</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Continue</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="global-footer">
+    <div class="footer-links">
+      <a href="#">Privacy Notice</a>
+      <a href="#">Terms of Service</a>
+    </div>
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>

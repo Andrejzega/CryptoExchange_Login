@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="70" height="70">
+  <defs>
+    <linearGradient id="lockGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A78BFA"/>
+      <stop offset="100%" stop-color="#7132F5"/>
+    </linearGradient>
+  </defs>
+  <rect x="18" y="32" width="44" height="34" rx="8" fill="url(#lockGrad)"/>
+  <path d="M26 32V24C26 16.27 32.27 10 40 10C47.73 10 54 16.27 54 24V32" stroke="#7132F5" stroke-width="6" stroke-linecap="round" fill="none"/>
+  <circle cx="40" cy="47" r="4" fill="#FFFFFF"/>
+  <path d="M40 51V57" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+</svg>

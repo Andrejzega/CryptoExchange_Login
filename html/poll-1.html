@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Onboarding Poll - Step 1 - MadeUpCompany</title>
+  <link rel="icon" type="image/svg+xml" href="../img/favicon.svg">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- Global Header -->
+  <header class="global-header">
+    <a href="../index.html" class="logo-slot">
+      <img src="../img/logo-full.svg" alt="MadeUpCompany" class="logo-img">
+    </a>
+
+    <div class="header-actions">
+      <label class="lang-pill">
+        <img src="../img/icons/globe.svg" alt="" class="lang-icon" width="16" height="16">
+        <select class="lang-select">
+          <option>English (US)</option>
+          <option>Slovenščina</option>
+          <option>Español</option>
+          <option>Deutsch</option>
+        </select>
+        <svg class="lang-chevron" width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 6l4 4 4-4"/>
+        </svg>
+      </label>
+      <a href="login.html" class="btn-header-light">Sign out</a>
+    </div>
+  </header>
+
+  <!-- Poll Step 1: Info Page 1 -->
+  <main class="flow-container">
+    <div class="sub-nav">
+      <a href="register-country.html" class="btn-back">‹ Back</a>
+      <a href="../index.html" class="btn-close" title="Exit">✕</a>
+    </div>
+
+    <div class="card text-left">
+      <h1 class="card-title">Info Page 1</h1>
+      <p class="card-sub">Text1.</p>
+
+      <h2 class="section-title">First and Last name</h2>
+      <p class="section-sub">Text3.</p>
+
+      <form action="poll-2.html" method="GET" novalidate>
+        <div class="name-row">
+          <div class="name-col field-group">
+            <input type="text" id="fname" class="text-field" placeholder=" " autocomplete="given-name" required>
+            <label class="floating-label" for="fname">first name</label>
+            <div class="field-error-msg">Missing required field</div>
+          </div>
+          <div class="name-col field-group">
+            <input type="text" id="lname" class="text-field" placeholder=" " autocomplete="family-name" required>
+            <label class="floating-label" for="lname">last name</label>
+            <div class="field-error-msg">Missing required field</div>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <input type="date" id="dob" class="text-field" required>
+          <label class="floating-label" for="dob">Date of birth</label>
+        </div>
+
+        <h2 class="section-title">Info 2</h2>
+        <div class="field-group">
+          <select id="nationality-select" class="text-field" required>
+            <option value="" disabled selected></option>
+            <option value="">🇧🇻 </option>
+            <option value="Afghan">🇦🇫 Afghan</option>
+            <option value="Albanian">🇦🇱 Albanian</option>
+            <option value="Algerian">🇩🇿 Algerian</option>
+            <option value="American">🇲🇵 American</option>
+            <option value="American Islander">🇺🇲 American Islander</option>
+            <option value="American Samoan">🇦🇸 American Samoan</option>
+            <option value="Andorran">🇦🇩 Andorran</option>
+            <option value="Angolan">🇦🇴 Angolan</option>
+            <option value="Anguillian">🇦🇮 Anguillian</option>
+            <option value="Antarctican">🇦🇶 Antarctican</option>
+            <option value="Antiguan, Barbudan">🇦🇬 Antiguan, Barbudan</option>
+            <option value="Argentine">🇦🇷 Argentine</option>
+            <option value="Armenian">🇦🇲 Armenian</option>
+            <option value="Aruban">🇦🇼 Aruban</option>
+            <option value="Australian">🇦🇺 Australian</option>
+            <option value="Austrian">🇦🇹 Austrian</option>
+            <option value="Azerbaijani">🇦🇿 Azerbaijani</option>
+            <option value="Bahamian">🇧🇸 Bahamian</option>
+            <option value="Bahraini">🇧🇭 Bahraini</option>
+            <option value="Bangladeshi">🇧🇩 Bangladeshi</option>
+            <option value="Barbadian">🇧🇧 Barbadian</option>
+            <option value="Belarusian">🇧🇾 Belarusian</option>
+            <option value="Belgian">🇧🇪 Belgian</option>
+            <option value="Belizean">🇧🇿 Belizean</option>
+            <option value="Beninese">🇧🇯 Beninese</option>
+            <option value="Bermudian">🇧🇲 Bermudian</option>
+            <option value="Bhutanese">🇧🇹 Bhutanese</option>
+            <option value="Bolivian">🇧🇴 Bolivian</option>
+            <option value="Bosnian, Herzegovinian">🇧🇦 Bosnian, Herzegovinian</option>
+            <option value="Brazilian">🇧🇷 Brazilian</option>
+            <option value="British">🇬🇧 British</option>
+            <option value="Bruneian">🇧🇳 Bruneian</option>
+            <option value="Bulgarian">🇧🇬 Bulgarian</option>
+            <option value="Burkinabe">🇧🇫 Burkinabe</option>
+            <option value="Burmese">🇲🇲 Burmese</option>
+            <option value="Burundian">🇧🇮 Burundian</option>
+            <option value="Cambodian">🇰🇭 Cambodian</option>
+            <option value="Cameroonian">🇨🇲 Cameroonian</option>
+            <option value="Canadian">🇨🇦 Canadian</option>
+            <option value="Cape Verdian">🇨🇻 Cape Verdian</option>
+            <option value="Caymanian">🇰🇾 Caymanian</option>
+            <option value="Central African">🇨🇫 Central African</option>
+            <option value="Chadian">🇹🇩 Chadian</option>
+            <option value="Channel Islander">🇬🇬 Channel Islander</option>
+            <option value="Chilean">🇨🇱 Chilean</option>
+            <option value="Chinese">🇨🇳 Chinese</option>
+            <option value="Christmas Islander">🇨🇽 Christmas Islander</option>
+            <option value="Cocos Islander">🇨🇨 Cocos Islander</option>
+            <option value="Colombian">🇨🇴 Colombian</option>
+            <option value="Comoran">🇰🇲 Comoran</option>
+            <option value="Congolese">🇨🇩 Congolese</option>
+            <option value="Cook Islander">🇨🇰 Cook Islander</option>
+            <option value="Costa Rican">🇨🇷 Costa Rican</option>
+            <option value="Croatian">🇭🇷 Croatian</option>
+            <option value="Cuban">🇨🇺 Cuban</option>
+            <option value="Curaçaoan">🇨🇼 Curaçaoan</option>
+            <option value="Cypriot">🇨🇾 Cypriot</option>
+            <option value="Czech">🇨🇿 Czech</option>
+            <option value="Danish">🇩🇰 Danish</option>
+            <option value="Djibouti">🇩🇯 Djibouti</option>
+            <option value="Dominican">🇩🇲 Dominican</option>
+            <option value="Dutch">🇧🇶 Dutch</option>
+            <option value="East Timorese">🇹🇱 East Timorese</option>
+            <option value="Ecuadorean">🇪🇨 Ecuadorean</option>
+            <option value="Egyptian">🇪🇬 Egyptian</option>
+            <option value="Emirati">🇦🇪 Emirati</option>
+            <option value="Equatorial Guinean">🇬🇶 Equatorial Guinean</option>
+            <option value="Eritrean">🇪🇷 Eritrean</option>
+            <option value="Estonian">🇪🇪 Estonian</option>
+            <option value="Ethiopian">🇪🇹 Ethiopian</option>
+            <option value="Falkland Islander">🇫🇰 Falkland Islander</option>
+            <option value="Faroese">🇫🇴 Faroese</option>
+            <option value="Fijian">🇫🇯 Fijian</option>
+            <option value="Filipino">🇵🇭 Filipino</option>
+            <option value="Finnish">🇫🇮 Finnish</option>
+            <option value="French">🇹🇫 French</option>
+            <option value="French Polynesian">🇵🇫 French Polynesian</option>
+            <option value="Gabonese">🇬🇦 Gabonese</option>
+            <option value="Gambian">🇬🇲 Gambian</option>
+            <option value="Georgian">🇬🇪 Georgian</option>
+            <option value="German">🇩🇪 German</option>
+            <option value="Ghanaian">🇬🇭 Ghanaian</option>
+            <option value="Gibraltar">🇬🇮 Gibraltar</option>
+            <option value="Greek">🇬🇷 Greek</option>
+            <option value="Greenlandic">🇬🇱 Greenlandic</option>
+            <option value="Grenadian">🇬🇩 Grenadian</option>
+            <option value="Guadeloupian">🇬🇵 Guadeloupian</option>
+            <option value="Guamanian">🇬🇺 Guamanian</option>
+            <option value="Guatemalan">🇬🇹 Guatemalan</option>
+            <option value="Guianan">🇬🇫 Guianan</option>
+            <option value="Guinea-Bissauan">🇬🇼 Guinea-Bissauan</option>
+            <option value="Guinean">🇬🇳 Guinean</option>
+            <option value="Guyanese">🇬🇾 Guyanese</option>
+            <option value="Haitian">🇭🇹 Haitian</option>
+            <option value="Heard and McDonald Islander">🇭🇲 Heard and McDonald Islander</option>
+            <option value="Honduran">🇭🇳 Honduran</option>
+            <option value="Hong Konger">🇭🇰 Hong Konger</option>
+            <option value="Hungarian">🇭🇺 Hungarian</option>
+            <option value="I-Kiribati">🇰🇮 I-Kiribati</option>
+            <option value="Icelander">🇮🇸 Icelander</option>
+            <option value="Indian">🇮🇳 Indian</option>
+            <option value="Indonesian">🇮🇩 Indonesian</option>
+            <option value="Iranian">🇮🇷 Iranian</option>
+            <option value="Iraqi">🇮🇶 Iraqi</option>
+            <option value="Irish">🇮🇪 Irish</option>
+            <option value="Israeli">🇮🇱 Israeli</option>
+            <option value="Italian">🇮🇹 Italian</option>
+            <option value="Ivorian">🇨🇮 Ivorian</option>
+            <option value="Jamaican">🇯🇲 Jamaican</option>
+            <option value="Japanese">🇯🇵 Japanese</option>
+            <option value="Jordanian">🇯🇴 Jordanian</option>
+            <option value="Kazakhstani">🇰🇿 Kazakhstani</option>
+            <option value="Kenyan">🇰🇪 Kenyan</option>
+            <option value="Kirghiz">🇰🇬 Kirghiz</option>
+            <option value="Kittitian or Nevisian">🇰🇳 Kittitian or Nevisian</option>
+            <option value="Kosovar">🇽🇰 Kosovar</option>
+            <option value="Kuwaiti">🇰🇼 Kuwaiti</option>
+            <option value="Laotian">🇱🇦 Laotian</option>
+            <option value="Latvian">🇱🇻 Latvian</option>
+            <option value="Lebanese">🇱🇧 Lebanese</option>
+            <option value="Liberian">🇱🇷 Liberian</option>
+            <option value="Libyan">🇱🇾 Libyan</option>
+            <option value="Liechtensteiner">🇱🇮 Liechtensteiner</option>
+            <option value="Lithuanian">🇱🇹 Lithuanian</option>
+            <option value="Luxembourger">🇱🇺 Luxembourger</option>
+            <option value="Macanese">🇲🇴 Macanese</option>
+            <option value="Macedonian">🇲🇰 Macedonian</option>
+            <option value="Mahoran">🇾🇹 Mahoran</option>
+            <option value="Malagasy">🇲🇬 Malagasy</option>
+            <option value="Malawian">🇲🇼 Malawian</option>
+            <option value="Malaysian">🇲🇾 Malaysian</option>
+            <option value="Maldivan">🇲🇻 Maldivan</option>
+            <option value="Malian">🇲🇱 Malian</option>
+            <option value="Maltese">🇲🇹 Maltese</option>
+            <option value="Manx">🇮🇲 Manx</option>
+            <option value="Marshallese">🇲🇭 Marshallese</option>
+            <option value="Martinican">🇲🇶 Martinican</option>
+            <option value="Mauritanian">🇲🇷 Mauritanian</option>
+            <option value="Mauritian">🇲🇺 Mauritian</option>
+            <option value="Mexican">🇲🇽 Mexican</option>
+            <option value="Micronesian">🇫🇲 Micronesian</option>
+            <option value="Moldovan">🇲🇩 Moldovan</option>
+            <option value="Monegasque">🇲🇨 Monegasque</option>
+            <option value="Mongolian">🇲🇳 Mongolian</option>
+            <option value="Montenegrin">🇲🇪 Montenegrin</option>
+            <option value="Montserratian">🇲🇸 Montserratian</option>
+            <option value="Moroccan">🇲🇦 Moroccan</option>
+            <option value="Mosotho">🇱🇸 Mosotho</option>
+            <option value="Motswana">🇧🇼 Motswana</option>
+            <option value="Mozambican">🇲🇿 Mozambican</option>
+            <option value="Namibian">🇳🇦 Namibian</option>
+            <option value="Nauruan">🇳🇷 Nauruan</option>
+            <option value="Nepalese">🇳🇵 Nepalese</option>
+            <option value="New Caledonian">🇳🇨 New Caledonian</option>
+            <option value="New Zealander">🇳🇿 New Zealander</option>
+            <option value="Ni-Vanuatu">🇻🇺 Ni-Vanuatu</option>
+            <option value="Nicaraguan">🇳🇮 Nicaraguan</option>
+            <option value="Nigerian">🇳🇬 Nigerian</option>
+            <option value="Nigerien">🇳🇪 Nigerien</option>
+            <option value="Niuean">🇳🇺 Niuean</option>
+            <option value="Norfolk Islander">🇳🇫 Norfolk Islander</option>
+            <option value="North Korean">🇰🇵 North Korean</option>
+            <option value="Norwegian">🇳🇴 Norwegian</option>
+            <option value="Omani">🇴🇲 Omani</option>
+            <option value="Pakistani">🇵🇰 Pakistani</option>
+            <option value="Palauan">🇵🇼 Palauan</option>
+            <option value="Palestinian">🇵🇸 Palestinian</option>
+            <option value="Panamanian">🇵🇦 Panamanian</option>
+            <option value="Papua New Guinean">🇵🇬 Papua New Guinean</option>
+            <option value="Paraguayan">🇵🇾 Paraguayan</option>
+            <option value="Peruvian">🇵🇪 Peruvian</option>
+            <option value="Pitcairn Islander">🇵🇳 Pitcairn Islander</option>
+            <option value="Polish">🇵🇱 Polish</option>
+            <option value="Portuguese">🇵🇹 Portuguese</option>
+            <option value="Puerto Rican">🇵🇷 Puerto Rican</option>
+            <option value="Qatari">🇶🇦 Qatari</option>
+            <option value="Romanian">🇷🇴 Romanian</option>
+            <option value="Russian">🇷🇺 Russian</option>
+            <option value="Rwandan">🇷🇼 Rwandan</option>
+            <option value="Réunionese">🇷🇪 Réunionese</option>
+            <option value="Sahrawi">🇪🇭 Sahrawi</option>
+            <option value="Saint Barthélemy Islander">🇧🇱 Saint Barthélemy Islander</option>
+            <option value="Saint Helenian">🇸🇭 Saint Helenian</option>
+            <option value="Saint Lucian">🇱🇨 Saint Lucian</option>
+            <option value="Saint Martin Islander">🇲🇫 Saint Martin Islander</option>
+            <option value="Saint Vincentian">🇻🇨 Saint Vincentian</option>
+            <option value="Saint-Pierrais, Miquelonnais">🇵🇲 Saint-Pierrais, Miquelonnais</option>
+            <option value="Salvadoran">🇸🇻 Salvadoran</option>
+            <option value="Sammarinese">🇸🇲 Sammarinese</option>
+            <option value="Samoan">🇼🇸 Samoan</option>
+            <option value="Sao Tomean">🇸🇹 Sao Tomean</option>
+            <option value="Saudi Arabian">🇸🇦 Saudi Arabian</option>
+            <option value="Senegalese">🇸🇳 Senegalese</option>
+            <option value="Serbian">🇷🇸 Serbian</option>
+            <option value="Seychellois">🇸🇨 Seychellois</option>
+            <option value="Sierra Leonean">🇸🇱 Sierra Leonean</option>
+            <option value="Singaporean">🇸🇬 Singaporean</option>
+            <option value="Slovak">🇸🇰 Slovak</option>
+            <option value="Slovenian">🇸🇮 Slovenian</option>
+            <option value="Solomon Islander">🇸🇧 Solomon Islander</option>
+            <option value="Somali">🇸🇴 Somali</option>
+            <option value="South African">🇿🇦 South African</option>
+            <option value="South Georgian South Sandwich Islander">🇬🇸 South Georgian South Sandwich Islander</option>
+            <option value="South Korean">🇰🇷 South Korean</option>
+            <option value="South Sudanese">🇸🇸 South Sudanese</option>
+            <option value="Spanish">🇪🇸 Spanish</option>
+            <option value="Sri Lankan">🇱🇰 Sri Lankan</option>
+            <option value="St. Maartener">🇸🇽 St. Maartener</option>
+            <option value="Sudanese">🇸🇩 Sudanese</option>
+            <option value="Surinamer">🇸🇷 Surinamer</option>
+            <option value="Swazi">🇸🇿 Swazi</option>
+            <option value="Swedish">🇸🇪 Swedish</option>
+            <option value="Swiss">🇨🇭 Swiss</option>
+            <option value="Syrian">🇸🇾 Syrian</option>
+            <option value="Tadzhik">🇹🇯 Tadzhik</option>
+            <option value="Taiwanese">🇹🇼 Taiwanese</option>
+            <option value="Tanzanian">🇹🇿 Tanzanian</option>
+            <option value="Thai">🇹🇭 Thai</option>
+            <option value="Togolese">🇹🇬 Togolese</option>
+            <option value="Tokelauan">🇹🇰 Tokelauan</option>
+            <option value="Tongan">🇹🇴 Tongan</option>
+            <option value="Trinidadian">🇹🇹 Trinidadian</option>
+            <option value="Tunisian">🇹🇳 Tunisian</option>
+            <option value="Turkish">🇹🇷 Turkish</option>
+            <option value="Turkmen">🇹🇲 Turkmen</option>
+            <option value="Turks and Caicos Islander">🇹🇨 Turks and Caicos Islander</option>
+            <option value="Tuvaluan">🇹🇻 Tuvaluan</option>
+            <option value="Ugandan">🇺🇬 Ugandan</option>
+            <option value="Ukrainian">🇺🇦 Ukrainian</option>
+            <option value="Uruguayan">🇺🇾 Uruguayan</option>
+            <option value="Uzbekistani">🇺🇿 Uzbekistani</option>
+            <option value="Vatican">🇻🇦 Vatican</option>
+            <option value="Venezuelan">🇻🇪 Venezuelan</option>
+            <option value="Vietnamese">🇻🇳 Vietnamese</option>
+            <option value="Virgin Islander">🇻🇬 Virgin Islander</option>
+            <option value="Wallis and Futuna Islander">🇼🇫 Wallis and Futuna Islander</option>
+            <option value="Yemeni">🇾🇪 Yemeni</option>
+            <option value="Zambian">🇿🇲 Zambian</option>
+            <option value="Zimbabwean">🇿🇼 Zimbabwean</option>
+            <option value="Ålandish">🇦🇽 Ålandish</option>
+          </select>
+          <label class="floating-label" for="nationality-select">Nationality</label>
+          <div class="field-error-msg">Missing required field</div>
+        </div>
+
+        <h2 class="section-title">Phone number</h2>
+        <div class="row phone-row">
+          <select class="phone-code text-field" id="phone-code" name="phone-code" aria-label="Country calling code">
+            <option value="+93" title="Afghanistan">🇦🇫 +93</option>
+            <option value="+355" title="Albania">🇦🇱 +355</option>
+            <option value="+213" title="Algeria">🇩🇿 +213</option>
+            <option value="+1684" title="American Samoa">🇦🇸 +1684</option>
+            <option value="+376" title="Andorra">🇦🇩 +376</option>
+            <option value="+244" title="Angola">🇦🇴 +244</option>
+            <option value="+1264" title="Anguilla">🇦🇮 +1264</option>
+            <option value="+1268" title="Antigua and Barbuda">🇦🇬 +1268</option>
+            <option value="+54" title="Argentina">🇦🇷 +54</option>
+            <option value="+374" title="Armenia">🇦🇲 +374</option>
+            <option value="+297" title="Aruba">🇦🇼 +297</option>
+            <option value="+61" title="Australia">🇦🇺 +61</option>
+            <option value="+43" title="Austria">🇦🇹 +43</option>
+            <option value="+994" title="Azerbaijan">🇦🇿 +994</option>
+            <option value="+1242" title="Bahamas">🇧🇸 +1242</option>
+            <option value="+973" title="Bahrain">🇧🇭 +973</option>
+            <option value="+880" title="Bangladesh">🇧🇩 +880</option>
+            <option value="+1246" title="Barbados">🇧🇧 +1246</option>
+            <option value="+375" title="Belarus">🇧🇾 +375</option>
+            <option value="+32" title="Belgium">🇧🇪 +32</option>
+            <option value="+501" title="Belize">🇧🇿 +501</option>
+            <option value="+229" title="Benin">🇧🇯 +229</option>
+            <option value="+1441" title="Bermuda">🇧🇲 +1441</option>
+            <option value="+975" title="Bhutan">🇧🇹 +975</option>
+            <option value="+591" title="Bolivia">🇧🇴 +591</option>
+            <option value="+387" title="Bosnia and Herzegovina">🇧🇦 +387</option>
+            <option value="+267" title="Botswana">🇧🇼 +267</option>
+            <option value="+47" title="Bouvet Island">🇧🇻 +47</option>
+            <option value="+55" title="Brazil">🇧🇷 +55</option>
+            <option value="+246" title="British Indian Ocean Territory">🇮🇴 +246</option>
+            <option value="+1284" title="British Virgin Islands">🇻🇬 +1284</option>
+            <option value="+673" title="Brunei">🇧🇳 +673</option>
+            <option value="+359" title="Bulgaria">🇧🇬 +359</option>
+            <option value="+226" title="Burkina Faso">🇧🇫 +226</option>
+            <option value="+257" title="Burundi">🇧🇮 +257</option>
+            <option value="+855" title="Cambodia">🇰🇭 +855</option>
+            <option value="+237" title="Cameroon">🇨🇲 +237</option>
+            <option value="+1" title="Canada">🇨🇦 +1</option>
+            <option value="+238" title="Cape Verde">🇨🇻 +238</option>
+            <option value="+599" title="Caribbean Netherlands">🇧🇶 +599</option>
+            <option value="+1345" title="Cayman Islands">🇰🇾 +1345</option>
+            <option value="+236" title="Central African Republic">🇨🇫 +236</option>
+            <option value="+235" title="Chad">🇹🇩 +235</option>
+            <option value="+56" title="Chile">🇨🇱 +56</option>
+            <option value="+86" title="China">🇨🇳 +86</option>
+            <option value="+61" title="Christmas Island">🇨🇽 +61</option>
+            <option value="+61" title="Cocos (Keeling) Islands">🇨🇨 +61</option>
+            <option value="+57" title="Colombia">🇨🇴 +57</option>
+            <option value="+269" title="Comoros">🇰🇲 +269</option>
+            <option value="+242" title="Congo">🇨🇬 +242</option>
+            <option value="+682" title="Cook Islands">🇨🇰 +682</option>
+            <option value="+506" title="Costa Rica">🇨🇷 +506</option>
+            <option value="+385" title="Croatia">🇭🇷 +385</option>
+            <option value="+53" title="Cuba">🇨🇺 +53</option>
+            <option value="+599" title="Curaçao">🇨🇼 +599</option>
+            <option value="+357" title="Cyprus">🇨🇾 +357</option>
+            <option value="+420" title="Czechia">🇨🇿 +420</option>
+            <option value="+243" title="DR Congo">🇨🇩 +243</option>
+            <option value="+45" title="Denmark">🇩🇰 +45</option>
+            <option value="+253" title="Djibouti">🇩🇯 +253</option>
+            <option value="+1767" title="Dominica">🇩🇲 +1767</option>
+            <option value="+1" title="Dominican Republic">🇩🇴 +1</option>
+            <option value="+593" title="Ecuador">🇪🇨 +593</option>
+            <option value="+20" title="Egypt">🇪🇬 +20</option>
+            <option value="+503" title="El Salvador">🇸🇻 +503</option>
+            <option value="+240" title="Equatorial Guinea">🇬🇶 +240</option>
+            <option value="+291" title="Eritrea">🇪🇷 +291</option>
+            <option value="+372" title="Estonia">🇪🇪 +372</option>
+            <option value="+268" title="Eswatini">🇸🇿 +268</option>
+            <option value="+251" title="Ethiopia">🇪🇹 +251</option>
+            <option value="+500" title="Falkland Islands">🇫🇰 +500</option>
+            <option value="+298" title="Faroe Islands">🇫🇴 +298</option>
+            <option value="+679" title="Fiji">🇫🇯 +679</option>
+            <option value="+358" title="Finland">🇫🇮 +358</option>
+            <option value="+33" title="France">🇫🇷 +33</option>
+            <option value="+594" title="French Guiana">🇬🇫 +594</option>
+            <option value="+689" title="French Polynesia">🇵🇫 +689</option>
+            <option value="+262" title="French Southern and Antarctic Lands">🇹🇫 +262</option>
+            <option value="+241" title="Gabon">🇬🇦 +241</option>
+            <option value="+220" title="Gambia">🇬🇲 +220</option>
+            <option value="+995" title="Georgia">🇬🇪 +995</option>
+            <option value="+49" title="Germany">🇩🇪 +49</option>
+            <option value="+233" title="Ghana">🇬🇭 +233</option>
+            <option value="+350" title="Gibraltar">🇬🇮 +350</option>
+            <option value="+30" title="Greece">🇬🇷 +30</option>
+            <option value="+299" title="Greenland">🇬🇱 +299</option>
+            <option value="+1473" title="Grenada">🇬🇩 +1473</option>
+            <option value="+590" title="Guadeloupe">🇬🇵 +590</option>
+            <option value="+1671" title="Guam">🇬🇺 +1671</option>
+            <option value="+502" title="Guatemala">🇬🇹 +502</option>
+            <option value="+44" title="Guernsey">🇬🇬 +44</option>
+            <option value="+224" title="Guinea">🇬🇳 +224</option>
+            <option value="+245" title="Guinea-Bissau">🇬🇼 +245</option>
+            <option value="+592" title="Guyana">🇬🇾 +592</option>
+            <option value="+509" title="Haiti">🇭🇹 +509</option>
+            <option value="+504" title="Honduras">🇭🇳 +504</option>
+            <option value="+852" title="Hong Kong">🇭🇰 +852</option>
+            <option value="+36" title="Hungary">🇭🇺 +36</option>
+            <option value="+354" title="Iceland">🇮🇸 +354</option>
+            <option value="+91" title="India">🇮🇳 +91</option>
+            <option value="+62" title="Indonesia">🇮🇩 +62</option>
+            <option value="+98" title="Iran">🇮🇷 +98</option>
+            <option value="+964" title="Iraq">🇮🇶 +964</option>
+            <option value="+353" title="Ireland">🇮🇪 +353</option>
+            <option value="+44" title="Isle of Man">🇮🇲 +44</option>
+            <option value="+972" title="Israel">🇮🇱 +972</option>
+            <option value="+39" title="Italy">🇮🇹 +39</option>
+            <option value="+225" title="Ivory Coast">🇨🇮 +225</option>
+            <option value="+1876" title="Jamaica">🇯🇲 +1876</option>
+            <option value="+81" title="Japan">🇯🇵 +81</option>
+            <option value="+44" title="Jersey">🇯🇪 +44</option>
+            <option value="+962" title="Jordan">🇯🇴 +962</option>
+            <option value="+7" title="Kazakhstan">🇰🇿 +7</option>
+            <option value="+254" title="Kenya">🇰🇪 +254</option>
+            <option value="+686" title="Kiribati">🇰🇮 +686</option>
+            <option value="+383" title="Kosovo">🇽🇰 +383</option>
+            <option value="+965" title="Kuwait">🇰🇼 +965</option>
+            <option value="+996" title="Kyrgyzstan">🇰🇬 +996</option>
+            <option value="+856" title="Laos">🇱🇦 +856</option>
+            <option value="+371" title="Latvia">🇱🇻 +371</option>
+            <option value="+961" title="Lebanon">🇱🇧 +961</option>
+            <option value="+266" title="Lesotho">🇱🇸 +266</option>
+            <option value="+231" title="Liberia">🇱🇷 +231</option>
+            <option value="+218" title="Libya">🇱🇾 +218</option>
+            <option value="+423" title="Liechtenstein">🇱🇮 +423</option>
+            <option value="+370" title="Lithuania">🇱🇹 +370</option>
+            <option value="+352" title="Luxembourg">🇱🇺 +352</option>
+            <option value="+853" title="Macau">🇲🇴 +853</option>
+            <option value="+261" title="Madagascar">🇲🇬 +261</option>
+            <option value="+265" title="Malawi">🇲🇼 +265</option>
+            <option value="+60" title="Malaysia">🇲🇾 +60</option>
+            <option value="+960" title="Maldives">🇲🇻 +960</option>
+            <option value="+223" title="Mali">🇲🇱 +223</option>
+            <option value="+356" title="Malta">🇲🇹 +356</option>
+            <option value="+692" title="Marshall Islands">🇲🇭 +692</option>
+            <option value="+596" title="Martinique">🇲🇶 +596</option>
+            <option value="+222" title="Mauritania">🇲🇷 +222</option>
+            <option value="+230" title="Mauritius">🇲🇺 +230</option>
+            <option value="+262" title="Mayotte">🇾🇹 +262</option>
+            <option value="+52" title="Mexico">🇲🇽 +52</option>
+            <option value="+691" title="Micronesia">🇫🇲 +691</option>
+            <option value="+373" title="Moldova">🇲🇩 +373</option>
+            <option value="+377" title="Monaco">🇲🇨 +377</option>
+            <option value="+976" title="Mongolia">🇲🇳 +976</option>
+            <option value="+382" title="Montenegro">🇲🇪 +382</option>
+            <option value="+1664" title="Montserrat">🇲🇸 +1664</option>
+            <option value="+212" title="Morocco">🇲🇦 +212</option>
+            <option value="+258" title="Mozambique">🇲🇿 +258</option>
+            <option value="+95" title="Myanmar">🇲🇲 +95</option>
+            <option value="+264" title="Namibia">🇳🇦 +264</option>
+            <option value="+674" title="Nauru">🇳🇷 +674</option>
+            <option value="+977" title="Nepal">🇳🇵 +977</option>
+            <option value="+31" title="Netherlands">🇳🇱 +31</option>
+            <option value="+687" title="New Caledonia">🇳🇨 +687</option>
+            <option value="+64" title="New Zealand">🇳🇿 +64</option>
+            <option value="+505" title="Nicaragua">🇳🇮 +505</option>
+            <option value="+227" title="Niger">🇳🇪 +227</option>
+            <option value="+234" title="Nigeria">🇳🇬 +234</option>
+            <option value="+683" title="Niue">🇳🇺 +683</option>
+            <option value="+672" title="Norfolk Island">🇳🇫 +672</option>
+            <option value="+850" title="North Korea">🇰🇵 +850</option>
+            <option value="+389" title="North Macedonia">🇲🇰 +389</option>
+            <option value="+1670" title="Northern Mariana Islands">🇲🇵 +1670</option>
+            <option value="+47" title="Norway">🇳🇴 +47</option>
+            <option value="+968" title="Oman">🇴🇲 +968</option>
+            <option value="+92" title="Pakistan">🇵🇰 +92</option>
+            <option value="+680" title="Palau">🇵🇼 +680</option>
+            <option value="+970" title="Palestine">🇵🇸 +970</option>
+            <option value="+507" title="Panama">🇵🇦 +507</option>
+            <option value="+675" title="Papua New Guinea">🇵🇬 +675</option>
+            <option value="+595" title="Paraguay">🇵🇾 +595</option>
+            <option value="+51" title="Peru">🇵🇪 +51</option>
+            <option value="+63" title="Philippines">🇵🇭 +63</option>
+            <option value="+64" title="Pitcairn Islands">🇵🇳 +64</option>
+            <option value="+48" title="Poland">🇵🇱 +48</option>
+            <option value="+351" title="Portugal">🇵🇹 +351</option>
+            <option value="+1" title="Puerto Rico">🇵🇷 +1</option>
+            <option value="+974" title="Qatar">🇶🇦 +974</option>
+            <option value="+40" title="Romania">🇷🇴 +40</option>
+            <option value="+7" title="Russia">🇷🇺 +7</option>
+            <option value="+250" title="Rwanda">🇷🇼 +250</option>
+            <option value="+262" title="Réunion">🇷🇪 +262</option>
+            <option value="+590" title="Saint Barthélemy">🇧🇱 +590</option>
+            <option value="+2" title="Saint Helena, Ascension and Tristan da Cunha">🇸🇭 +2</option>
+            <option value="+1869" title="Saint Kitts and Nevis">🇰🇳 +1869</option>
+            <option value="+1758" title="Saint Lucia">🇱🇨 +1758</option>
+            <option value="+590" title="Saint Martin">🇲🇫 +590</option>
+            <option value="+508" title="Saint Pierre and Miquelon">🇵🇲 +508</option>
+            <option value="+1784" title="Saint Vincent and the Grenadines">🇻🇨 +1784</option>
+            <option value="+685" title="Samoa">🇼🇸 +685</option>
+            <option value="+378" title="San Marino">🇸🇲 +378</option>
+            <option value="+966" title="Saudi Arabia">🇸🇦 +966</option>
+            <option value="+221" title="Senegal">🇸🇳 +221</option>
+            <option value="+381" title="Serbia">🇷🇸 +381</option>
+            <option value="+248" title="Seychelles">🇸🇨 +248</option>
+            <option value="+232" title="Sierra Leone">🇸🇱 +232</option>
+            <option value="+65" title="Singapore">🇸🇬 +65</option>
+            <option value="+1721" title="Sint Maarten">🇸🇽 +1721</option>
+            <option value="+421" title="Slovakia">🇸🇰 +421</option>
+            <option value="+386" title="Slovenia" selected>🇸🇮 +386</option>
+            <option value="+677" title="Solomon Islands">🇸🇧 +677</option>
+            <option value="+252" title="Somalia">🇸🇴 +252</option>
+            <option value="+27" title="South Africa">🇿🇦 +27</option>
+            <option value="+500" title="South Georgia">🇬🇸 +500</option>
+            <option value="+82" title="South Korea">🇰🇷 +82</option>
+            <option value="+211" title="South Sudan">🇸🇸 +211</option>
+            <option value="+34" title="Spain">🇪🇸 +34</option>
+            <option value="+94" title="Sri Lanka">🇱🇰 +94</option>
+            <option value="+249" title="Sudan">🇸🇩 +249</option>
+            <option value="+597" title="Suriname">🇸🇷 +597</option>
+            <option value="+4779" title="Svalbard and Jan Mayen">🇸🇯 +4779</option>
+            <option value="+46" title="Sweden">🇸🇪 +46</option>
+            <option value="+41" title="Switzerland">🇨🇭 +41</option>
+            <option value="+963" title="Syria">🇸🇾 +963</option>
+            <option value="+239" title="São Tomé and Príncipe">🇸🇹 +239</option>
+            <option value="+886" title="Taiwan">🇹🇼 +886</option>
+            <option value="+992" title="Tajikistan">🇹🇯 +992</option>
+            <option value="+255" title="Tanzania">🇹🇿 +255</option>
+            <option value="+66" title="Thailand">🇹🇭 +66</option>
+            <option value="+670" title="Timor-Leste">🇹🇱 +670</option>
+            <option value="+228" title="Togo">🇹🇬 +228</option>
+            <option value="+690" title="Tokelau">🇹🇰 +690</option>
+            <option value="+676" title="Tonga">🇹🇴 +676</option>
+            <option value="+1868" title="Trinidad and Tobago">🇹🇹 +1868</option>
+            <option value="+216" title="Tunisia">🇹🇳 +216</option>
+            <option value="+993" title="Turkmenistan">🇹🇲 +993</option>
+            <option value="+1649" title="Turks and Caicos Islands">🇹🇨 +1649</option>
+            <option value="+688" title="Tuvalu">🇹🇻 +688</option>
+            <option value="+90" title="Türkiye">🇹🇷 +90</option>
+            <option value="+256" title="Uganda">🇺🇬 +256</option>
+            <option value="+380" title="Ukraine">🇺🇦 +380</option>
+            <option value="+971" title="United Arab Emirates">🇦🇪 +971</option>
+            <option value="+44" title="United Kingdom">🇬🇧 +44</option>
+            <option value="+1" title="United States">🇺🇸 +1</option>
+            <option value="+268" title="United States Minor Outlying Islands">🇺🇲 +268</option>
+            <option value="+1340" title="United States Virgin Islands">🇻🇮 +1340</option>
+            <option value="+598" title="Uruguay">🇺🇾 +598</option>
+            <option value="+998" title="Uzbekistan">🇺🇿 +998</option>
+            <option value="+678" title="Vanuatu">🇻🇺 +678</option>
+            <option value="+3" title="Vatican City">🇻🇦 +3</option>
+            <option value="+58" title="Venezuela">🇻🇪 +58</option>
+            <option value="+84" title="Vietnam">🇻🇳 +84</option>
+            <option value="+681" title="Wallis and Futuna">🇼🇫 +681</option>
+            <option value="+2" title="Western Sahara">🇪🇭 +2</option>
+            <option value="+967" title="Yemen">🇾🇪 +967</option>
+            <option value="+260" title="Zambia">🇿🇲 +260</option>
+            <option value="+263" title="Zimbabwe">🇿🇼 +263</option>
+            <option value="+35818" title="Åland Islands">🇦🇽 +35818</option>
+          </select>
+          <div class="field-group col">
+            <input type="tel" id="phone" class="text-field" placeholder=" " required>
+            <label class="floating-label" for="phone">What is your phone number?</label>
+            <div class="field-error-msg">Please enter a valid phone number (5-15 digits)</div>
+          </div>
+        </div>
+
+        <h2 class="section-title">pick your option</h2>
+        <p class="section-sub">text 4.</p>
+
+        <div class="radio-list">
+          <label class="radio-item"><input type="radio" name="opt" checked> <span>option 1</span></label>
+          <label class="radio-item"><input type="radio" name="opt"> <span>option 2</span></label>
+          <label class="radio-item"><input type="radio" name="opt"> <span>option 3</span></label>
+          <label class="radio-item"><input type="radio" name="opt"> <span>option 4</span></label>
+          <label class="radio-item"><input type="radio" name="opt"> <span>option 5</span></label>
+        </div>
+
+        <p class="disclaimer text-center">text 6.</p>
+        <button type="submit" class="btn btn-primary">Continue</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="global-footer">
+    <div class="footer-links">
+      <a href="#">Privacy Notice</a>
+      <a href="#">Terms of Service</a>
+    </div>
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>
