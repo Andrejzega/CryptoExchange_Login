@@ -1,7 +1,7 @@
 /* MadeUpCompany - Minimal Educational Client-Side Script */
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const DEMO_EMAIL = "student@example.com";
+const DEMO_EMAIL = "user@example.com";
 
 // Password Visibility Toggle
 function togglePassword(id, btn) {

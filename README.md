@@ -11,7 +11,7 @@
 ## 🌐 Live Demo
 
 You can try the live project here:  
-👉 **[Crypto Exchange Live Demo](https://<your-username>.github.io/loginWebsite/)** *(via GitHub Pages)*
+👉 **[Crypto Exchange Live Demo](https://andrejzega.github.io/CryptoExchange_Login/)** *(via GitHub Pages)*
 
 ---
 
@@ -33,7 +33,7 @@ Use these credentials to test the forms:
 
 | Field | Test Value | Notes |
 | :--- | :--- | :--- |
-| **Email** | `student@example.com` | Verified placeholder account |
+| **Email** | `user@example.com` | Verified placeholder account |
 | **Password** | `Password123!` | Any password accepted on sign-in |
 | **OTP Code** | `123456` | Simulation code |
 
