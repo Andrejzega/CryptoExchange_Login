@@ -35,9 +35,13 @@ Use these credentials to test the forms:
 | :--- | :--- | :--- |
 | **Email** | `user@example.com` | Verified placeholder account |
 | **Password** | `Password123!` | Any password accepted on sign-in |
-| **OTP Code** | `123456` | Simulation code |
-
 ---
+
+## 🖼️ Screenshots
+
+![Login Page](docs/login.png)
+
+![Register Page](docs/register.png)
 
 ## 📁 Project Structure
 
