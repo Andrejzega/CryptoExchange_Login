@@ -21,8 +21,7 @@ function togglePassword(id, btn) {
 // Personal vs Business Tab Switch with Kraken Sliding Animation (register.html)
 function switchTab(type) {
   const isP = type === "personal";
-  const imageP = document.getElementById("image-personal");
-  const imageB = document.getElementById("image-business");
+  const image = document.getElementById("image");
   const tabP = document.getElementById("tab-personal");
   const tabB = document.getElementById("tab-business");
   const formP = document.getElementById("form-personal");
@@ -37,16 +36,14 @@ function switchTab(type) {
   }
 
   if (isP) {
-    imageB.hidden = true;
-    imageP.hidden = false;
+    image.src = "../img/reg-personal.png"
     formB.hidden = true;
     formP.hidden = false;
     formP.classList.remove("slide-right", "slide-left");
     void formP.offsetWidth;
     formP.classList.add("slide-left");
   } else {
-    imageP.hidden = true;
-    imageB.hidden = false;
+    image.src = "../img/reg-business.png"
     formP.hidden = true;
     formB.hidden = false;
     formB.classList.remove("slide-right", "slide-left");
