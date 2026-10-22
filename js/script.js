@@ -239,8 +239,8 @@ function nastaviPovezave() {
       const href = a.getAttribute("href");
       if (a.id === "forgot-password") return e.preventDefault(), swal("Password Recovery", `Demo password: ${DEMO_PASSWORD}`);
       if (a.id === "forgot-username") return e.preventDefault(), swal("Username Recovery", `Demo username / email: ${DEMO_EMAIL}`);
-      if (href === "#credits" || a.classList.contains("credits")) {
-        return e.preventDefault(), swal("Credits","Andrej Zega, 4.RB, 2026);
+      if (href === "#credits" || a.classList.contains("skriti-credits")) {
+        return e.preventDefault(), swal("Credits", null, "info", "Andrej Zega, 4.RB, 2026");
       }
       if (href === "#" || href === "") {
         e.preventDefault();
