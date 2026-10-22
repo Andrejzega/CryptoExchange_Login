@@ -36,13 +36,9 @@ The demo credientials a are:
 ---
 
 
-## Previews
+## Preview
 
 ![Showcase picture](docs/showcase.png)
-
-![Login Page](docs/login.png)
-
-![Register Page](docs/register.png)
 
 ## Project Structure
 
