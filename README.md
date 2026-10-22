@@ -1,4 +1,4 @@
-<h1">Crypto Exchange Sign in & Register Flow Replica</h1>
+# Crypto Exchange Sign in & Register Flow Replica
 
 <p>
   A school project replicating the authentication and onboarding forms of a Crypto Exchange using <strong>HTML5</strong>, <strong>CSS</strong>, and <strong>Vanilla JavaScript</strong>.
@@ -37,6 +37,8 @@ The demo credientials a are:
 
 
 ## Previews
+
+![Showcase picture](docs/showcase.png)
 
 ![Login Page](docs/login.png)
 
