@@ -6,106 +6,101 @@
   <title>Create an account - Kraken</title>
   <link rel="icon" type="image/svg+xml" href="../img/favicon.ico">
   <link rel="stylesheet" href="../css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
-  <!-- Global Header -->
-  <header class="global-header">
-    <a href="../index.html" class="logo-slot">
-      <img src="../img/logo-full.svg" class="logo-img">
+  <header class="glavni-header">
+    <a href="../index.html" class="polje-logotip">
+      <img src="../img/logo-full.svg" class="image-logotip">
     </a>
 
-    <div class="header-actions">
-      <label class="lang-pill">
-        <img src="../img/icons/globe.svg" alt="" class="lang-icon" width="16" height="16">
+    <div class="dejanja-header">
+      <label class="jezikovni-button">
+        <img src="../img/icons/globe.svg" alt="" class="icon-jezika" width="16" height="16">
       </label>
-      <a href="login.html" class="btn-header-light">Sign in</a>
+      <a href="login.html" class="button-header-svetel">Sign in</a>
     </div>
   </header>
 
-  <!-- Main Register Container (Step 1 with Personal/Business Toggle) -->
-  <main class="flow-container">
-    <div class="sub-nav"></div>
+  <main class="glavni-vsebnik">
+    <div class="pod-nav"></div>
 
-    <div class="card">
-      <div class="image-slot" id="image-personal">
+    <div class="kartica">
+      <div class="polje-image" id="image-personal">
         <img id="image" src="../img/reg-personal.png" >
 
       </div>
 
-      <h1 class="card-title" id="signup-title">Create an account</h1>
-      <p class="card-sub">Access the Kraken family of products.</p>
+      <h1 class="naslov-kartice" id="signup-title">Create an account</h1>
+      <p class="podnaslov-kartice">Access the Kraken family of products.</p>
 
-      <!-- Segmented Tab Toggle -->
-      <div class="tab-control">
-        <button type="button" id="tab-personal" class="tab-btn active" onclick="switchTab('personal')">Personal</button>
-        <button type="button" id="tab-business" class="tab-btn" onclick="switchTab('business')">Business</button>
+      <div class="nadzor-zavihkov">
+        <button type="button" id="tab-personal" class="button-zavihek aktiven" onclick="zamenjajZavihek('personal')">Personal</button>
+        <button type="button" id="tab-business" class="button-zavihek" onclick="zamenjajZavihek('business')">Business</button>
       </div>
 
-      <!-- Personal Form -->
       <form id="form-personal" action="register-confirm.html" method="GET" novalidate>
-        <div class="field-stack">
-          <div class="field-group">
-            <input type="email" id="signup-personal-email" class="text-field" placeholder=" " autocomplete="email" required>
-            <label class="floating-label" for="signup-personal-email">Email</label>
-            <div class="field-error-msg">Please enter a valid email address</div>
+        <div class="sklad-polj">
+          <div class="skupina-polja">
+            <input type="email" id="signup-personal-email" class="besedilno-polje" placeholder=" " autocomplete="email" maxlength="50" required>
+            <label class="lebdeca-label" for="signup-personal-email">Email</label>
+            <div class="sporocilo-napake">Please enter a valid email address</div>
           </div>
 
-          <div class="field-group">
-            <input type="text" id="signup-personal-invite" class="text-field" placeholder=" ">
-            <label class="floating-label" for="signup-personal-invite">Invite Code (optional)</label>
+          <div class="skupina-polja">
+            <input type="text" id="signup-personal-invite" class="besedilno-polje" placeholder=" " maxlength="12">
+            <label class="lebdeca-label" for="signup-personal-invite">Invite Code (optional)</label>
           </div>
         </div>
 
-        <button type="submit" class="btn btn-primary">Continue</button>
+        <button type="submit" class="button glavni-button">Continue</button>
 
-        <div class="divider"><span>or continue with</span></div>
+        <div class="locilnik"><span>or continue with</span></div>
 
-        <div class="social-circle-row">
-          <button class="social-circle-btn" type="button">
+        <div class="vrstica-okroglih-buttonov">
+          <button class="okrogli-druzbeni-button" type="button">
             <img src="../img/icons/google.svg" alt="Google" width="20" height="20">
           </button>
-          <button class="social-circle-btn" type="button">
+          <button class="okrogli-druzbeni-button" type="button">
             <img src="../img/icons/apple.svg" alt="Apple" width="18" height="18">
           </button>
         </div>
       </form>
 
-      <!-- Business Form matching Kraken -->
       <form id="form-business" action="register-confirm.html" method="GET" novalidate hidden>
         <input type="hidden" name="type" value="business">
-        <div class="field-stack">
-          <div class="field-group">
-            <input type="email" id="signup-biz-email" class="text-field" placeholder=" " autocomplete="email" required>
-            <label class="floating-label" for="signup-biz-email">Email</label>
-            <div class="field-error-msg">Please enter a valid email address</div>
+        <div class="sklad-polj">
+          <div class="skupina-polja">
+            <input type="email" id="signup-biz-email" class="besedilno-polje" placeholder=" " autocomplete="email" maxlength="50" required>
+            <label class="lebdeca-label" for="signup-biz-email">Email</label>
+            <div class="sporocilo-napake">Please enter a valid email address</div>
           </div>
 
-          <div class="field-group password-field">
-            <input type="password" id="signup-biz-pass" class="text-field" placeholder=" " autocomplete="new-password" required>
-            <label class="floating-label" for="signup-biz-pass">Password</label>
-            <button type="button" class="password-toggle" onclick="togglePassword('signup-biz-pass', this)">
+          <div class="skupina-polja polje-geslo">
+            <input type="password" id="signup-biz-pass" class="besedilno-polje" placeholder=" " autocomplete="new-password" minlength="12" maxlength="50" required>
+            <label class="lebdeca-label" for="signup-biz-pass">Password</label>
+            <button type="button" class="preklop-gesla" onclick="preklopiGeslo('signup-biz-pass', this)">
               <img src="../img/eye.svg" alt="Show password" width="18" height="18">
             </button>
-            <div class="field-error-msg">Password must fulfill all 4 security criteria</div>
+            <div class="sporocilo-napake">Password must fulfill all 4 security criteria</div>
           </div>
         </div>
 
-        <!-- Requirements chips directly under stacked password -->
-        <div class="req-chips">
-          <span class="chip" data-req="length"><span class="chip-icon">✕</span> 12 characters</span>
-          <span class="chip" data-req="number"><span class="chip-icon">✕</span> 1 number</span>
-          <span class="chip" data-req="special"><span class="chip-icon">✕</span> 1 special character</span>
-          <span class="chip" data-req="letter"><span class="chip-icon">✕</span> 1 letter</span>
+        <div class="zahteve-znacke">
+          <span class="znacka" data-req="length"><span class="icon-znacke">✕</span> 12 characters</span>
+          <span class="znacka" data-req="number"><span class="icon-znacke">✕</span> 1 number</span>
+          <span class="znacka" data-req="special"><span class="icon-znacke">✕</span> 1 special character</span>
+          <span class="znacka" data-req="letter"><span class="icon-znacke">✕</span> 1 letter</span>
         </div>
 
-        <div class="field-group">
-          <input type="text" id="signup-biz-invite" class="text-field" placeholder=" ">
-          <label class="floating-label" for="signup-biz-invite">Invite Code (optional)</label>
+        <div class="skupina-polja">
+          <input type="text" id="signup-biz-invite" class="besedilno-polje" placeholder=" " maxlength="12">
+          <label class="lebdeca-label" for="signup-biz-invite">Invite Code (optional)</label>
         </div>
 
-        <div class="field-group">
-          <select id="signup-biz-country" class="text-field text-field-dropdown select-field" required>
+        <div class="skupina-polja">
+          <select id="signup-biz-country" class="besedilno-polje spustno-polje-z-naslovom izbirno-polje" required>
             <option value="" disabled selected></option>
             <option value="Afghanistan">🇦🇫 Afghanistan</option>
             <option value="Albania">🇦🇱 Albania</option>
@@ -358,23 +353,21 @@
             <option value="Zimbabwe">🇿🇼 Zimbabwe</option>
             <option value="Åland Islands">🇦🇽 Åland Islands</option>
           </select>
-          <label class="floating-label" for="signup-biz-country">Country of Formation</label>
-          <div class="field-error-msg">Please select your country of formation</div>
+          <label class="lebdeca-label" for="signup-biz-country">Country of Formation</label>
+          <div class="sporocilo-napake">Please select your country of formation</div>
         </div>
 
-        <button type="submit" class="btn btn-primary">Create account</button>
-        <p class="disclaimer">For clients trading for business purposes or on behalf of a business entity. <a href="#">Learn more</a></p>
+        <button type="submit" class="button glavni-button">Create account</button>
       </form>
 
-      <p class="card-footer">
+      <p class="footer-kartice">
         Already have an account? <a href="login.html">Sign in</a>
       </p>
     </div>
   </main>
 
-  <!-- Global Footer -->
-  <footer class="global-footer">
-    <div class="footer-links">
+  <footer class="glavni-footer">
+    <div class="povezave-footer">
       <a href="#">Privacy Notice</a>
       <a href="#">Terms of Service</a>
     </div>

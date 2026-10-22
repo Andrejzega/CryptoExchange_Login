@@ -6,58 +6,57 @@
   <title>Get Verified - Kraken</title>
   <link rel="icon" type="image" href="../img/favicon.ico">
   <link rel="stylesheet" href="../css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
-  <!-- Global Header -->
-  <header class="global-header">
-    <a href="../index.html" class="logo-slot">
-      <img src="../img/logo-full.svg" class="logo-img">
+  <header class="glavni-header">
+    <a href="../index.html" class="polje-logotip">
+      <img src="../img/logo-full.svg" class="image-logotip">
     </a>
 
-    <div class="header-actions">
-      <label class="lang-pill">
-        <img src="../img/icons/globe.svg" alt="" class="lang-icon" width="16" height="16">
+    <div class="dejanja-header">
+      <label class="jezikovni-button">
+        <img src="../img/icons/globe.svg" alt="" class="icon-jezika" width="16" height="16">
       </label>
-      <a href="login.html" class="btn-header-light">Sign out</a>
+      <a href="login.html" class="button-header-svetel">Sign out</a>
     </div>
   </header>
 
-  <!-- Poll Step 2: Info Page 2 -->
-  <main class="flow-container">
-    <div class="sub-nav">
-      <a href="poll-1.html" class="btn-back">‹ Back</a>
-      <a href="../index.html" class="btn-close" title="Exit">✕</a>
+  <main class="glavni-vsebnik">
+    <div class="pod-nav">
+      <a href="poll-1.html" class="button-nazaj">‹ Back</a>
+      <a href="../index.html" class="button-zapri" title="Exit">✕</a>
     </div>
 
-    <div class="card text-left">
-      <h1 class="card-title-soft">Additional information</h1>
-      <p class="card-sub">Regulations require us to collect some additional info about you to continue trading on Kraken. <a href="#"<>Learn more</a></p>
+    <div class="kartica besedilo-levo">
+      <h1 class="mehki-naslov-kartice">Additional information</h1>
+      <p class="podnaslov-kartice">Regulations require us to collect some additional info about you to continue trading on Kraken. <a href="#">Learn more</a></p>
 
       <form action="poll-3.html" method="GET">
-        <h2 class="section-title">How do you plan to use Kraken?</h2>
-        <div class="radio-list">
-          <label class="check-item"><input type="checkbox" name="a1"> <span>Invest or trade crpyto</span></label>
-          <label class="check-item"><input type="checkbox" name="a2"> <span>Invest or trade stocks</span></label>
-          <label class="check-item"><input type="checkbox" name="a3"> <span>Peer-to-peer payments (P2P)</span></label>
-          <label class="check-item"><input type="checkbox" name="a4"> <span>Futures trading</span></label>
-          <label class="check-item"><input type="checkbox" name="a5"> <span>Margin trading</span></label>
-          <label class="check-item"><input type="checkbox" name="a6"> <span>High-volume trading via OTC</span></label>
-          <label class="check-item"><input type="checkbox" name="a7"> <span>I'm Still exploring</span></label>
+        <h2 class="naslov-razdelka">How do you plan to use Kraken?</h2>
+        <div class="seznam-izbir">
+          <label class="potrditveni-element"><input type="checkbox" name="a1"> <span>Invest or trade crpyto</span></label>
+          <label class="potrditveni-element"><input type="checkbox" name="a2"> <span>Invest or trade stocks</span></label>
+          <label class="potrditveni-element"><input type="checkbox" name="a3"> <span>Peer-to-peer payments (P2P)</span></label>
+          <label class="potrditveni-element"><input type="checkbox" name="a4"> <span>Futures trading</span></label>
+          <label class="potrditveni-element"><input type="checkbox" name="a5"> <span>Margin trading</span></label>
+          <label class="potrditveni-element"><input type="checkbox" name="a6"> <span>High-volume trading via OTC</span></label>
+          <label class="potrditveni-element"><input type="checkbox" name="a7"> <span>I'm Still exploring</span></label>
         </div>
 
-        <h2 class="section-title">What are your sources of funds</h2>
-        <div class="radio-list">
-          <label class="check-item"><input type="checkbox" name="a1"> <span>Salary</span></label>
-          <label class="check-item"><input type="checkbox" name="a2"> <span>Business Proceeds</span></label>
-          <label class="check-item"><input type="checkbox" name="a3"> <span>Retirement income or pension</span></label>
-          <label class="check-item"><input type="checkbox" name="a4"> <span>Investments or inheritance</span></label>
-          <label class="check-item"><input type="checkbox" name="a5"> <span>Other</span></label>
+        <h2 class="naslov-razdelka">What are your sources of funds</h2>
+        <div class="seznam-izbir">
+          <label class="potrditveni-element"><input type="checkbox" name="a1"> <span>Salary</span></label>
+          <label class="potrditveni-element"><input type="checkbox" name="a2"> <span>Business Proceeds</span></label>
+          <label class="potrditveni-element"><input type="checkbox" name="a3"> <span>Retirement income or pension</span></label>
+          <label class="potrditveni-element"><input type="checkbox" name="a4"> <span>Investments or inheritance</span></label>
+          <label class="potrditveni-element"><input type="checkbox" name="a5"> <span>Other</span></label>
         </div>
 
-        <label class="field-label" for="poll-select-1">How much money do you expect to deposit and withdraw in a month?</label>
-        <div class="field-group">
-          <select id="poll-select-1" class="text-field select-field" required>
+        <label class="label-polja" for="poll-select-1">How much money do you expect to deposit and withdraw in a month?</label>
+        <div class="skupina-polja">
+          <select id="poll-select-1" class="besedilno-polje spustno-polje-brez-naslova izbirno-polje" required>
             <option value="" disabled selected></option>
             <option>Less than €1,000</option>
             <option>€1,000 - €9,999</option>
@@ -67,9 +66,9 @@
           </select>
         </div>
 
-        <label class="field-label" for="poll-select-2">How many trades do you expect to make in a month?</label>
-        <div class="field-group">
-          <select id="poll-select-2" class="text-field select-field" required>
+        <label class="label-polja" for="poll-select-2">How many trades do you expect to make in a month?</label>
+        <div class="skupina-polja">
+          <select id="poll-select-2" class="besedilno-polje spustno-polje-brez-naslova izbirno-polje" required>
             <option value="" disabled selected></option>
             <option>Fewer than 10</option>
             <option>10-99</option>
@@ -79,14 +78,13 @@
           </select>
         </div>
 
-        <button type="submit" class="btn btn-primary">Continue</button>
+        <button type="submit" class="button glavni-button">Continue</button>
       </form>
     </div>
   </main>
 
-  <!-- Global Footer -->
-  <footer class="global-footer">
-    <div class="footer-links">
+  <footer class="glavni-footer">
+    <div class="povezave-footer">
       <a href="#">Privacy Notice</a>
       <a href="#">Terms of Service</a>
     </div>

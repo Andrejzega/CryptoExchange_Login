@@ -1,235 +1,143 @@
-/* MadeUpCompany - Minimal Educational Client-Side Script */
+/* MadeUpCompany - Enostavna izobraževalna skripta na strani odjemalca */
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const DEMO_EMAIL = "user@example.com";
+const DEMO_PASSWORD = "Password123!";
 
-// Password Visibility Toggle
-function togglePassword(id, btn) {
-  const input = document.getElementById(id);
-  if (!input) return;
-  const isHidden = input.type === "password";
-  input.type = isHidden ? "text" : "password";
-  const icon = btn.querySelector("img");
-  if (icon) {
-    icon.src = isHidden ? icon.src.replace("eye.svg", "eye-closed.svg") : icon.src.replace("eye-closed.svg", "eye.svg");
-    icon.alt = isHidden ? "Hide password" : "Show password";
-  } else {
-    btn.textContent = isHidden ? "Hide" : "Show";
-  }
+const swal = (title, text, icon = "info", html, cb) =>
+  typeof Swal !== "undefined"
+    ? Swal.fire({ title, text, html, icon, confirmButtonColor: "#7132F5" }).then(cb)
+    : (alert(text || title), cb && cb());
+
+function preklopiGeslo(id, btn) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const isPass = el.type === "password";
+  el.type = isPass ? "text" : "password";
+  const img = btn.querySelector("img");
+  img ? (img.src = img.src.replace(isPass ? "eye.svg" : "eye-closed.svg", isPass ? "eye-closed.svg" : "eye.svg")) : (btn.textContent = isPass ? "Skrij" : "Pokaži");
 }
 
-// Personal vs Business Tab Switch with Kraken Sliding Animation (register.html)
-function switchTab(type) {
-  const isP = type === "personal";
-  const image = document.getElementById("image");
-  const tabP = document.getElementById("tab-personal");
-  const tabB = document.getElementById("tab-business");
-  const formP = document.getElementById("form-personal");
-  const formB = document.getElementById("form-business");
-  const title = document.getElementById("signup-title");
-  if (!tabP || !tabB || !formP || !formB) return;
-
-  tabP.classList.toggle("active", isP);
-  tabB.classList.toggle("active", !isP);
-  if (title) {
-    title.textContent = isP ? "Create an account" : "Create a business account";
-  }
-
-  if (isP) {
-    image.src = "../img/reg-personal.png"
-    formB.hidden = true;
-    formP.hidden = false;
-    formP.classList.remove("slide-right", "slide-left");
-    void formP.offsetWidth;
-    formP.classList.add("slide-left");
-  } else {
-    image.src = "../img/reg-business.png"
-    formP.hidden = true;
-    formB.hidden = false;
-    formB.classList.remove("slide-right", "slide-left");
-    void formB.offsetWidth;
-    formB.classList.add("slide-right");
-  }
+function uveljaviKodo() {
+  typeof Swal !== "undefined"
+    ? Swal.fire({ icon: "success", title: "Koda povabila uveljavljena!", timer: 1800, showConfirmButton: false })
+    : alert("Koda povabila uveljavljena!");
 }
 
-// 6-Digit OTP Auto-advance & Clipboard Paste (Confirm pages)
-function setupOTP() {
-  const boxes = document.querySelectorAll(".otp-box");
-  boxes.forEach((box, i) => {
-    box.addEventListener("input", () => {
-      box.value = box.value.replace(/\D/g, "");
-      if (box.value && i < boxes.length - 1) boxes[i + 1].focus();
+function zamenjajZavihek(vrsta) {
+  const jeOsebno = vrsta === "personal";
+  const [pTab, bTab, pForm, bForm, slika, naslov] = ["tab-personal", "tab-business", "form-personal", "form-business", "image", "signup-title"].map(id => document.getElementById(id));
+  if (!pTab || !bTab || !pForm || !bForm) return;
+  pTab.classList.toggle("aktiven", jeOsebno);
+  bTab.classList.toggle("aktiven", !jeOsebno);
+  if (naslov) naslov.textContent = jeOsebno ? "Create an account" : "Create a business account";
+  slika.src = `../img/reg-${jeOsebno ? "personal" : "business"}.png`;
+  const [show, hide, anim] = jeOsebno ? [pForm, bForm, "podrsaj-levo"] : [bForm, pForm, "podrsaj-desno"];
+  hide.hidden = true;
+  show.hidden = false;
+  show.classList.remove("podrsaj-desno", "podrsaj-levo");
+  void show.offsetWidth;
+  show.classList.add(anim);
+}
+
+function nastaviOTP() {
+  const b = document.querySelectorAll(".polje-otp");
+  b.forEach((el, i) => {
+    el.addEventListener("input", () => {
+      el.value = el.value.replace(/\D/g, "");
+      if (el.value && i < b.length - 1) b[i + 1].focus();
     });
-    box.addEventListener("keydown", e => {
-      if (e.key === "Backspace" && !box.value && i > 0) boxes[i - 1].focus();
-    });
+    el.addEventListener("keydown", e => e.key === "Backspace" && !el.value && i > 0 && b[i - 1].focus());
   });
 }
 
-function pasteOTP(id) {
-  const boxes = document.querySelectorAll(`#${id} .otp-box`);
-  "123456".split("").forEach((d, i) => { if (boxes[i]) boxes[i].value = d; });
-  if (boxes[5]) boxes[5].focus();
-}
-
-// Password requirement chips - only appear when password field is selected
-function setupPasswordChips() {
-  document.querySelectorAll(".password-field input").forEach(input => {
-    const form = input.closest("form") || input.closest(".card");
-    const chipsWrapper = form ? form.querySelector(".req-chips") : null;
-    const chips = form ? form.querySelectorAll(".chip") : [];
-    if (!chipsWrapper || !chips.length) return;
-
-    input.addEventListener("focus", () => chipsWrapper.classList.add("show"));
-    input.addEventListener("blur", () => chipsWrapper.classList.remove("show"));
-
-    input.addEventListener("input", () => {
-      const val = input.value;
-      const checks = {
-        length: val.length >= 12,
-        number: /\d/.test(val),
-        special: /[^a-zA-Z0-9\s]/.test(val),
-        letter: /[a-zA-Z]/.test(val)
-      };
-      chips.forEach(chip => {
-        const req = chip.dataset.req;
-        const ok = Boolean(req && checks[req]);
-        chip.classList.toggle("valid", ok);
-        const icon = chip.querySelector(".chip-icon");
-        if (icon) icon.textContent = ok ? "✓" : "✕";
+function nastaviZnackeGesla() {
+  document.querySelectorAll(".polje-geslo input").forEach(vnos => {
+    const f = vnos.closest("form") || vnos.closest(".kartica");
+    const ovoj = f?.querySelector(".zahteve-znacke");
+    const znacke = f ? f.querySelectorAll(".znacka") : [];
+    if (!ovoj || !znacke.length) return;
+    vnos.addEventListener("focus", () => ovoj.classList.add("prikazi"));
+    vnos.addEventListener("blur", () => ovoj.classList.remove("prikazi"));
+    vnos.addEventListener("input", () => {
+      const v = vnos.value;
+      const c = { length: v.length >= 12, number: /\d/.test(v), special: /[^a-zA-Z0-9\s]/.test(v), letter: /[a-zA-Z]/.test(v) };
+      znacke.forEach(z => {
+        const ok = Boolean(c[z.dataset.req]);
+        z.classList.toggle("veljavno", ok);
+        const ic = z.querySelector(".icon-znacke, .ikona-znacke");
+        if (ic) ic.textContent = ok ? "✓" : "✕";
       });
     });
   });
 }
 
-// Email & Field Validation Helpers
-function showFieldError(input, message) {
-  if (!input) return;
-  const group = input.closest(".field-group");
-  if (!group) return;
-  group.classList.add("has-error");
-  let err = group.querySelector(".field-error-msg");
-  if (!err) {
-    err = document.createElement("div");
-    err.className = "field-error-msg";
-    group.appendChild(err);
-  }
-  if (message) err.textContent = message;
+function pokaziNapakoPolja(el, msg) {
+  const grp = el?.closest(".skupina-polja");
+  if (!grp) return;
+  grp.classList.add("ima-napako");
+  let err = grp.querySelector(".sporocilo-napake");
+  if (!err) grp.appendChild(err = Object.assign(document.createElement("div"), { className: "sporocilo-napake" }));
+  if (msg) err.textContent = msg;
 }
 
-function clearFieldError(input) {
-  if (!input) return;
-  const group = input.closest(".field-group");
-  if (group) group.classList.remove("has-error");
+function pocistiNapakoPolja(el) {
+  el?.closest(".skupina-polja")?.classList.remove("ima-napako");
 }
 
-function setupEmailLiveValidation(inputId) {
-  const input = document.getElementById(inputId);
-  if (!input) return;
-  input.addEventListener("input", () => {
-    if (EMAIL_REGEX.test(input.value.trim())) clearFieldError(input);
-  });
-  input.addEventListener("blur", () => {
-    const val = input.value.trim();
-    if (val && !EMAIL_REGEX.test(val)) {
-      showFieldError(input, "Please enter a valid email address");
-    }
-  });
+function nastaviEmailPreverjanje(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.addEventListener("input", () => EMAIL_REGEX.test(el.value.trim()) && pocistiNapakoPolja(el));
+  el.addEventListener("blur", () => el.value.trim() && !EMAIL_REGEX.test(el.value.trim()) && pokaziNapakoPolja(el, "Please enter a valid email address"));
 }
 
-// Form Handlers Setup
-function setupFormHandlers() {
-  // 1. Login Form (login.html)
-  const loginUser = document.getElementById("login-user");
-  const loginPass = document.getElementById("login-pass");
-  if (loginUser && loginPass) {
-    setupEmailLiveValidation("login-user");
-    const form = loginUser.closest("form");
-    if (form) {
-      form.addEventListener("submit", e => {
-        e.preventDefault();
-        const email = loginUser.value.trim();
-        const pass = loginPass.value;
+const preveriGesloZahteve = pass => pass.length >= 12 && /\d/.test(pass) && /[^a-zA-Z0-9\s]/.test(pass) && /[a-zA-Z]/.test(pass);
 
-        if (!EMAIL_REGEX.test(email)) {
-          showFieldError(loginUser, "Please enter a valid email address");
-          loginUser.focus();
-          return;
-        }
-
-        if (email.toLowerCase() !== DEMO_EMAIL.toLowerCase()) {
-          showFieldError(loginUser, `Unknown account. Demo email: ${DEMO_EMAIL}`);
-          loginUser.focus();
-          return;
-        }
-
-        if (!pass) {
-          showFieldError(loginPass, "Please enter your password");
-          loginPass.focus();
-          return;
-        }
-
-        clearFieldError(loginUser);
-        clearFieldError(loginPass);
-        alert("Login successful!");
-        window.location.href = "login.html";
-      });
-    }
-  }
-
-  // 2. Personal Register Form (register.html)
-  const pEmail = document.getElementById("signup-personal-email");
-  const pForm = document.getElementById("form-personal");
-  if (pEmail && pForm) {
-    setupEmailLiveValidation("signup-personal-email");
-    pForm.addEventListener("submit", e => {
+function nastaviObracunObrazcev() {
+  // 1. Prijava
+  const u = document.getElementById("login-user"), p = document.getElementById("login-pass");
+  if (u && p) {
+    nastaviEmailPreverjanje("login-user");
+    u.closest("form")?.addEventListener("submit", e => {
       e.preventDefault();
-      const val = pEmail.value.trim();
-      if (!EMAIL_REGEX.test(val)) {
-        showFieldError(pEmail, "Please enter a valid email address");
-        pEmail.focus();
-        return;
-      }
-      clearFieldError(pEmail);
-      localStorage.setItem("userEmail", val);
+      const email = u.value.trim(), geslo = p.value;
+      if (!EMAIL_REGEX.test(email)) return pokaziNapakoPolja(u, "Please enter a valid email address"), u.focus();
+      if (email.toLowerCase() !== DEMO_EMAIL.toLowerCase()) return pokaziNapakoPolja(u, "Unknown account"), u.focus();
+      if (!geslo) return pokaziNapakoPolja(p, "Please enter your password"), p.focus();
+      if (geslo !== DEMO_PASSWORD) return pokaziNapakoPolja(p, "Incorrect password"), p.focus();
+      pocistiNapakoPolja(u); pocistiNapakoPolja(p);
+      swal("Login Successful!", "Welcome back to Kraken.", "success", null, () => window.location.href = "login.html");
+    });
+  }
+
+  // 2. Osebna registracija
+  const pu = document.getElementById("signup-personal-email"), pf = document.getElementById("form-personal");
+  if (pu && pf) {
+    nastaviEmailPreverjanje("signup-personal-email");
+    pf.addEventListener("submit", e => {
+      e.preventDefault();
+      const v = pu.value.trim();
+      if (!EMAIL_REGEX.test(v)) return pokaziNapakoPolja(pu, "Please enter a valid email address"), pu.focus();
+      pocistiNapakoPolja(pu);
+      localStorage.setItem("userEmail", v);
       localStorage.setItem("accountType", "personal");
       window.location.href = "register-confirm.html";
     });
   }
 
-  // 3. Business Register Form (register.html)
-  const bEmail = document.getElementById("signup-biz-email");
-  const bPass = document.getElementById("signup-biz-pass");
-  const bForm = document.getElementById("form-business");
-  if (bEmail && bPass && bForm) {
-    setupEmailLiveValidation("signup-biz-email");
-    bForm.addEventListener("submit", e => {
+  // 3. Poslovna registracija
+  const bu = document.getElementById("signup-biz-email"), bp = document.getElementById("signup-biz-pass"), bf = document.getElementById("form-business");
+  if (bu && bp && bf) {
+    nastaviEmailPreverjanje("signup-biz-email");
+    bf.addEventListener("submit", e => {
       e.preventDefault();
-      const email = bEmail.value.trim();
-      const pass = bPass.value;
-
-      if (!EMAIL_REGEX.test(email)) {
-        showFieldError(bEmail, "Please enter a valid email address");
-        bEmail.focus();
-        return;
-      }
-      clearFieldError(bEmail);
-
-      const passValid = pass.length >= 12 && /\d/.test(pass) && /[^a-zA-Z0-9\s]/.test(pass) && /[a-zA-Z]/.test(pass);
-      if (!passValid) {
-        showFieldError(bPass, "Password must fulfill all 4 security criteria");
-        bPass.focus();
-        return;
-      }
-      clearFieldError(bPass);
-
-      const country = document.getElementById("signup-biz-country");
-      if (country && !country.value) {
-        showFieldError(country, "Please select your country of formation");
-        country.focus();
-        return;
-      }
-
+      const email = bu.value.trim(), geslo = bp.value, country = document.getElementById("signup-biz-country");
+      if (!EMAIL_REGEX.test(email)) return pokaziNapakoPolja(bu, "Please enter a valid email address"), bu.focus();
+      pocistiNapakoPolja(bu);
+      if (!preveriGesloZahteve(geslo)) return pokaziNapakoPolja(bp, "Password must fulfill all 4 security criteria"), bp.focus();
+      pocistiNapakoPolja(bp);
+      if (country && !country.value) return pokaziNapakoPolja(country, "Please select your country of formation"), country.focus();
       localStorage.setItem("userEmail", email);
       localStorage.setItem("accountType", "business");
       if (country) localStorage.setItem("userCountry", country.value);
@@ -237,113 +145,120 @@ function setupFormHandlers() {
     });
   }
 
-  // 4. Confirm Email OTP Page (register-confirm.html)
-  const regConfirmForm = document.getElementById("register-confirm-form") || document.querySelector(".flow-container form");
-  if (regConfirmForm && window.location.pathname.includes("register-confirm")) {
-    const isBusiness = new URLSearchParams(window.location.search).get("type") === "business" || localStorage.getItem("accountType") === "business";
-    regConfirmForm.addEventListener("submit", e => {
+  // 4. Potrditev kode OTP
+  const regConfirm = document.getElementById("register-confirm-form") || document.querySelector(".glavni-vsebnik form");
+  if (regConfirm && location.pathname.includes("register-confirm")) {
+    regConfirm.addEventListener("submit", e => {
       e.preventDefault();
-      if (isBusiness) {
-        window.location.href = "login.html";
-      } else {
-        window.location.href = "register-password.html";
+      const jePosel = new URLSearchParams(location.search).get("type") === "business" || localStorage.getItem("accountType") === "business";
+      jePosel
+        ? swal("Registration Complete!", "Your demo business account has been registered successfully.", "success", null, () => window.location.href = "login.html")
+        : window.location.href = "register-password.html";
+    });
+  }
+
+  // 5. Izbira gesla
+  const s3p = document.getElementById("step3-pass");
+  s3p?.closest("form")?.addEventListener("submit", e => {
+    if (!preveriGesloZahteve(s3p.value)) {
+      e.preventDefault();
+      pokaziNapakoPolja(s3p, "Password must fulfill all 4 security criteria");
+      s3p.focus();
+    }
+  });
+
+  // 6. Izbira države
+  const cSel = document.getElementById("country-select");
+  cSel?.closest("form")?.addEventListener("submit", () => localStorage.setItem("userCountry", cSel.value));
+
+  // 7. Prvi korak ankete
+  const phone = document.getElementById("phone"), dob = document.getElementById("dob");
+  if (dob) {
+    dob.max = new Date().toISOString().split("T")[0];
+    dob.addEventListener("change", () => {
+      if (dob.value) {
+        const b = new Date(dob.value), now = new Date();
+        let a = now.getFullYear() - b.getFullYear();
+        if (now.getMonth() - b.getMonth() < 0 || (now.getMonth() === b.getMonth() && now.getDate() < b.getDate())) a--;
+        if (b <= now && a >= 18) pocistiNapakoPolja(dob);
       }
     });
   }
-
-  // 5. Register Password Form (register-password.html)
-  const step3Pass = document.getElementById("step3-pass");
-  if (step3Pass) {
-    const form = step3Pass.closest("form");
-    if (form) {
-      form.addEventListener("submit", e => {
-        const pass = step3Pass.value;
-        const passValid = pass.length >= 12 && /\d/.test(pass) && /[^a-zA-Z0-9\s]/.test(pass) && /[a-zA-Z]/.test(pass);
-        if (!passValid) {
-          e.preventDefault();
-          showFieldError(step3Pass, "Password must fulfill all 4 security criteria");
-          step3Pass.focus();
-        }
-      });
-    }
-  }
-
-  // 6. Register Country Form (register-country.html)
-  const countrySelect = document.getElementById("country-select");
-  if (countrySelect) {
-    const form = countrySelect.closest("form");
-    if (form) {
-      form.addEventListener("submit", () => {
-        localStorage.setItem("userCountry", countrySelect.value);
-      });
-    }
-  }
-
-  // 7. Poll 1 Form with Phone Number Regex (poll-1.html)
-  const phoneInput = document.getElementById("phone");
-  if (phoneInput) {
-    const form = phoneInput.closest("form");
-    const fname = document.getElementById("fname");
-    const lname = document.getElementById("lname");
-
-    phoneInput.addEventListener("input", () => {
-      const cleanDigits = phoneInput.value.replace(/\D/g, "");
-      if (cleanDigits.length >= 5 && cleanDigits.length <= 15) clearFieldError(phoneInput);
+  if (phone) {
+    phone.addEventListener("keydown", e => e.key.length === 1 && !/\d/.test(e.key) && !e.ctrlKey && !e.metaKey && e.preventDefault());
+    phone.addEventListener("input", () => {
+      phone.value = phone.value.replace(/\D/g, "");
+      if (phone.value.length >= 5 && phone.value.length <= 15) pocistiNapakoPolja(phone);
     });
-
-    if (form) {
-      form.addEventListener("submit", e => {
-        let hasError = false;
-        if (fname && !fname.value.trim()) {
-          showFieldError(fname, "Missing required field");
-          hasError = true;
-        } else {
-          clearFieldError(fname);
-        }
-
-        if (lname && !lname.value.trim()) {
-          showFieldError(lname, "Missing required field");
-          hasError = true;
-        } else {
-          clearFieldError(lname);
-        }
-
-        const cleanDigits = phoneInput.value.replace(/\D/g, "");
-        if (!cleanDigits || cleanDigits.length < 5 || cleanDigits.length > 15) {
-          showFieldError(phoneInput, "Please enter a valid phone number (5-15 digits)");
-          hasError = true;
-        } else {
-          clearFieldError(phoneInput);
-        }
-
-        if (hasError) {
-          e.preventDefault();
-        }
+    phone.closest("form")?.addEventListener("submit", e => {
+      let err = false;
+      const [fn, ln] = ["fname", "lname"].map(id => document.getElementById(id));
+      [fn, ln].forEach(el => {
+        if (el && !el.value.trim()) pokaziNapakoPolja(el, "Missing required field"), err = true;
+        else if (el) pocistiNapakoPolja(el);
       });
-    }
+      if (dob) {
+        if (!dob.value) pokaziNapakoPolja(dob, "Missing required field"), err = true;
+        else {
+          const b = new Date(dob.value), now = new Date();
+          let a = now.getFullYear() - b.getFullYear();
+          if (now.getMonth() - b.getMonth() < 0 || (now.getMonth() === b.getMonth() && now.getDate() < b.getDate())) a--;
+          if (b > now) pokaziNapakoPolja(dob, "Date of birth cannot be in the future"), err = true;
+          else if (a < 18) pokaziNapakoPolja(dob, "You must be at least 18 years old"), err = true;
+          else pocistiNapakoPolja(dob);
+        }
+      }
+      const digits = phone.value.replace(/\D/g, "");
+      if (!digits || digits.length < 5 || digits.length > 15) {
+        pokaziNapakoPolja(phone, "Please enter a valid phone number (5-15 digits)");
+        err = true;
+      } else pocistiNapakoPolja(phone);
+      if (err) e.preventDefault();
+    });
   }
 
-  // 8. Login OTP Confirm Form (login-confirm.html)
-  const loginConfirmForm = document.getElementById("login-confirm-form") || document.querySelector(".flow-container form");
-  if (loginConfirmForm && window.location.pathname.includes("login-confirm")) {
-    loginConfirmForm.addEventListener("submit", e => {
+  // 8. Tretji korak ankete
+  const p3f = document.getElementById("poll-3-form") || document.querySelector(".kartica form");
+  if (p3f && location.pathname.includes("poll-3")) {
+    p3f.addEventListener("submit", e => {
       e.preventDefault();
-      alert("Login successful!");
-      window.location.href = "login.html";
+      swal("Registration Complete!", "Your demo personal account has been created successfully.", "success", null, () => window.location.href = "login.html");
     });
   }
 
-  // 9. Summary Country Display (poll-3.html)
-  const summaryCountry = document.getElementById("summary-country-text");
-  if (summaryCountry) {
-    const saved = localStorage.getItem("userCountry");
-    if (saved) summaryCountry.textContent = saved;
-  }
+  // 9. Prikaz države
+  const sumCountry = document.getElementById("summary-country-text");
+  if (sumCountry && localStorage.getItem("userCountry")) sumCountry.textContent = localStorage.getItem("userCountry");
 }
 
-// Initialize on DOM Ready
+function nastaviPovezave() {
+  document.addEventListener("click", e => {
+    const a = e.target.closest("a");
+    if (a) {
+      const href = a.getAttribute("href");
+      if (a.id === "forgot-password") return e.preventDefault(), swal("Password Recovery", `Demo password: ${DEMO_PASSWORD}`);
+      if (a.id === "forgot-username") return e.preventDefault(), swal("Username Recovery", `Demo username / email: ${DEMO_EMAIL}`);
+      if (href === "#credits" || a.classList.contains("skrite-zasluge")) {
+        return e.preventDefault(), swal("Hidden Credits", null, "info",
+          '<div style="text-align:center;padding:6px;"><p style="font-size:16px;font-weight:600;color:#7132F5;margin-bottom:8px;">Crypto Exchange Sign in &amp; Register Flow</p><p style="font-size:13px;color:#686B82;margin-bottom:10px;">Educational replica project.</p><p style="font-size:13px;color:#107C41;font-weight:500;">You found the secret credits! &#10024;</p></div>'
+        );
+      }
+      if (href === "#" || href === "") {
+        e.preventDefault();
+        return swal("Notice", `You pressed the ${a.getAttribute("data-ime") || a.textContent.trim() || "Link"} button`);
+      }
+    }
+    const btn = e.target.closest("button.druzbeni-button, button.okrogli-druzbeni-button, button.druzbeni-gumb, button.okrogli-druzbeni-gumb");
+    if (btn) {
+      e.preventDefault();
+      return swal("Notice", `You pressed the ${btn.textContent.trim() || btn.querySelector("img")?.alt || "Social"} button`);
+    }
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-  setupOTP();
-  setupPasswordChips();
-  setupFormHandlers();
+  nastaviOTP();
+  nastaviZnackeGesla();
+  nastaviObracunObrazcev();
+  nastaviPovezave();
 });

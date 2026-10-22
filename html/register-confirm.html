@@ -6,66 +6,64 @@
   <title>Confirm your email - Kraken</title>
   <link rel="icon" type="image" href="../img/favicon.ico">
   <link rel="stylesheet" href="../css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
-  <!-- Global Header -->
-  <header class="global-header">
-    <a href="../index.html" class="logo-slot">
-      <img src="../img/logo-full.svg"class="logo-img">
+  <header class="glavni-header">
+    <a href="../index.html" class="polje-logotip">
+      <img src="../img/logo-full.svg"class="image-logotip">
     </a>
 
-    <div class="header-actions">
-      <label class="lang-pill">
-        <img src="../img/icons/globe.svg" alt="" class="lang-icon" width="16" height="16">
+    <div class="dejanja-header">
+      <label class="jezikovni-button">
+        <img src="../img/icons/globe.svg" alt="" class="icon-jezika" width="16" height="16">
       </label>
-      <a href="login.html" class="btn-header-light">Sign in</a>
+      <a href="login.html" class="button-header-svetel">Sign in</a>
     </div>
   </header>
 
-  <!-- Step 2: Email OTP Confirmation -->
-  <main class="flow-container">
-    <div class="sub-nav">
-      <a href="register.html" class="btn-back">‹ Back</a>
+  <main class="glavni-vsebnik">
+    <div class="pod-nav">
+      <a href="register.html" class="button-nazaj">‹ Back</a>
     </div>
 
-    <div class="card">
-      <div class="image-slot">
+    <div class="kartica">
+      <div class="polje-image">
         <img src="../img/mail.png">
       </div>
 
-      <h1 class="card-title">Confirm your email</h1>
-      <p class="card-sub">Enter the 6-digit confirmation code sent to your email.</p>
+      <h1 class="naslov-kartice">Confirm your email</h1>
+      <p class="podnaslov-kartice">Enter the 6-digit confirmation code sent to your email.</p>
 
       <form id="register-confirm-form" action="register-password.html" method="GET">
-        <div class="otp-row" id="otp-boxes">
-          <input type="text" maxlength="1" pattern="[0-9]" inputmode="numeric" class="otp-box" required autofocus>
-          <input type="text" maxlength="1" pattern="[0-9]" inputmode="numeric" class="otp-box" required>
-          <input type="text" maxlength="1" pattern="[0-9]" inputmode="numeric" class="otp-box" required>
-          <input type="text" maxlength="1" pattern="[0-9]" inputmode="numeric" class="otp-box" required>
-          <input type="text" maxlength="1" pattern="[0-9]" inputmode="numeric" class="otp-box" required>
-          <input type="text" maxlength="1" pattern="[0-9]" inputmode="numeric" class="otp-box" required>
+        <div class="vrstica-otp" id="otp-boxes">
+          <input type="text" maxlength="1" pattern="[0-9]" inputmode="numeric" class="polje-otp" required autofocus>
+          <input type="text" maxlength="1" pattern="[0-9]" inputmode="numeric" class="polje-otp" required>
+          <input type="text" maxlength="1" pattern="[0-9]" inputmode="numeric" class="polje-otp" required>
+          <input type="text" maxlength="1" pattern="[0-9]" inputmode="numeric" class="polje-otp" required>
+          <input type="text" maxlength="1" pattern="[0-9]" inputmode="numeric" class="polje-otp" required>
+          <input type="text" maxlength="1" pattern="[0-9]" inputmode="numeric" class="polje-otp" required>
         </div>
 
-        <div class="btn-row">
-          <button type="button" class="btn btn-secondary">Resend code</button>
-          <button type="submit" class="btn btn-primary">Continue</button>
+        <div class="vrstica-buttonov">
+          <button type="button" class="button sekundarni-button">Resend code</button>
+          <button type="submit" class="button glavni-button">Continue</button>
         </div>
       </form>
 
-      <p class="card-footer">
+      <p class="footer-kartice">
         Already have a Kraken account? <a href="login.html">Sign in</a>
       </p>
     </div>
 
-    <p class="page-disclaimer">
+    <p class="opozorilo-strani">
       Confirming your email helps protect your account, allows password recovery, and ensures we can reach you with security alerts.
     </p>
   </main>
 
-  <!-- Global Footer -->
-  <footer class="global-footer">
-    <div class="footer-links">
+  <footer class="glavni-footer">
+    <div class="povezave-footer">
       <a href="#">Privacy Notice</a>
       <a href="#">Terms of Service</a>
     </div>
