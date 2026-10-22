@@ -315,7 +315,7 @@ h1, h2, h3 {
 .podrsaj-desno { animation: slideFromRight 0.25s ease forwards; }
 .podrsaj-levo { animation: slideFromLeft 0.25s ease forwards; }
 
-/* Vnosna polja in oznake */
+/* Polja in oznake */
 .skupina-polja {
   position: relative;
   margin-top: 14px;
@@ -819,7 +819,7 @@ input[type="date"].besedilno-polje ~ .lebdeca-oznaka {
   background-color: var(--input-bg);
 }
 
-/* Noga kartice in opozorila */
+/* Footer, kartice in opozorila */
 .footer-kartice,
 .noga-kartice,
 .opozorilo {
