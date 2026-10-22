@@ -239,10 +239,8 @@ function nastaviPovezave() {
       const href = a.getAttribute("href");
       if (a.id === "forgot-password") return e.preventDefault(), swal("Password Recovery", `Demo password: ${DEMO_PASSWORD}`);
       if (a.id === "forgot-username") return e.preventDefault(), swal("Username Recovery", `Demo username / email: ${DEMO_EMAIL}`);
-      if (href === "#credits" || a.classList.contains("skrite-zasluge")) {
-        return e.preventDefault(), swal("Hidden Credits", null, "info",
-          '<div style="text-align:center;padding:6px;"><p style="font-size:16px;font-weight:600;color:#7132F5;margin-bottom:8px;">Crypto Exchange Sign in &amp; Register Flow</p><p style="font-size:13px;color:#686B82;margin-bottom:10px;">Educational replica project.</p><p style="font-size:13px;color:#107C41;font-weight:500;">You found the secret credits! &#10024;</p></div>'
-        );
+      if (href === "#credits" || a.classList.contains("credits")) {
+        return e.preventDefault(), swal("Credits","Andrej Zega, 4.RB, 2026);
       }
       if (href === "#" || href === "") {
         e.preventDefault();
