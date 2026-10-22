@@ -1,5 +1,3 @@
-/* MadeUpCompany - Enostavna izobraževalna skripta na strani odjemalca */
-
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const DEMO_EMAIL = "user@example.com";
 const DEMO_PASSWORD = "Password123!";
@@ -93,6 +91,9 @@ function nastaviEmailPreverjanje(id) {
 }
 
 const preveriGesloZahteve = pass => pass.length >= 12 && /\d/.test(pass) && /[^a-zA-Z0-9\s]/.test(pass) && /[a-zA-Z]/.test(pass);
+
+
+//Logika za registracijski form
 
 function nastaviObracunObrazcev() {
   // 1. Prijava
