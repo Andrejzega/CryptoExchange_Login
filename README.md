@@ -17,7 +17,7 @@ You can **[check out the website](https://andrejzega.github.io/CryptoExchange_Lo
 
 ### Credientials
 
-The demo credientials a are:
+The demo credientials are:
 - **Email / username**: user@example.com
 - **Password**: Password123!
 
